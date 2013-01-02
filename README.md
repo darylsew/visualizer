@@ -12,6 +12,6 @@ Good question. Working on that.
 
 Resources:
 last.fm API. maybe.
-
+wave.py python library
 
 We're not going to use the branch workflow until we agree on a workflow model (presumably in the next few days). For now, enjoy the proof of concept code.
