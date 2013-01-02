@@ -1,26 +1,32 @@
 Visualizer
 ==========
 *Group members:*
-<li>pd6: Eric Cerny, Hon Wei Khor</li>
-<li>pd7: Daryl Sew, Peter Jasko</li>
+*   pd6: Eric Cerny, Hon Wei Khor
 
-*What we're going to do:*
+*   pd7: Daryl Sew, Peter Jasko
+
+What we're going to do:
+-----------------------
+
 Take a music file and visualize it, let the user play around with some settings for the visualization. We'll decide on additional features later on in the project.
 
-*How we're going to do it:*
+How we're going to do it:
+------------------------
+
 Using chaco and scipy/numpy (contained within the Enthought library for scientific computing) for fourier transform analysis of wav files.
 
-*Resources/dependencies (we have a LOT of dependencies):*
+Resources/dependencies (we have a LOT of dependencies):
+-------------------------------------------------------
 
 Songs will be from the user's own music library; several royalty-free songs will be provided for demonstration purposes.
-1. Tkinter (sudo apt-get install python-tk)
-2. WCKGraph (Tkinter and WCKGraph are temporary dependencies.)
-3. wavepy (sudo pip install wave)
-4. python enthought (python ets/ets.py) Enthought includes enable, scipy/numpy, and chaco; however, I haven't been able to get it working. It's a pretty awesome, well supported library for scientific computing, so I have faith in it, but I do have a plan B.
-5. enable (sudo apt-get install python-enable)
-6. scipy/numpy (sudo apt-get install python-numpy python-scipy)
-7. chaco (sudo pip install chaco)
-8. pyaudio (sudo apt-get install python-pyaudio)
+*   Tkinter (sudo apt-get install python-tk)
+*   WCKGraph (Tkinter and WCKGraph are temporary dependencies.)
+*   wavepy (sudo pip install wave)
+*   python enthought (python ets/ets.py) Enthought includes enable, scipy/numpy, and chaco; however, I haven't been able to get it working. It's a pretty awesome, well supported library for scientific computing, so I have faith in it, but I do have a plan B.
+*   enable (sudo apt-get install python-enable)
+*   scipy/numpy (sudo apt-get install python-numpy python-scipy)
+*   chaco (sudo pip install chaco)
+*   pyaudio (sudo apt-get install python-pyaudio)
 
 We're not really going to use the branch workflow until we agree on a workflow model (presumably in the next few days). We'll have a formal writeup of our workflow and of the semantics of design we'll stick to sometime soon.
 
