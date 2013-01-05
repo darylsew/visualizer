@@ -61,16 +61,18 @@ If it turns out that you guys have extra time after you've done your job, try to
 
 Branch Workflow/Github Use
 --------------------------
-Refer to my email to ml7 group about branching if you need a reference for Git branching.
-Please write legitimate, detailed commit messages. If you don't, everyone will hate you.
-DO NOT approve a pull request if code is not commented well (we're talking """ comment """ or /* comment */s everywhere- you should know what *every* function does) or if the request is not written up well. Let the user know why the pull request was denied. Only approve a pull request after actually reviewing all of the changes and making a detailed comment; please don't approve your own pull requests.
+Refer to my email to ml7 group about branching if you need a reference for Git branching.  
+Please write legitimate, detailed commit messages. If you don't, everyone will hate you.  
+DO NOT approve a pull request if code is not commented well (we're talking """ comment """ or /* comment */s everywhere- you should know what *every* function does) or if the request is not written up well.  
+If you choose to deny a pull request, be sure to detail your reasons why.  
+Only approve a pull request after actually reviewing all of the changes and making a detailed comment; please don't approve your own pull requests.  
 
 There are better workflows we could use, but at this point I think it would be most appropriate to follow the same workflow we did in class (i.e. Daryl would do work in the git branch Daryl (regardless of what I'm working on), etc.). If the project gets larger and we continue working on it, we can switch to a better workflow.
 
 Style Guides
 ------------
-Try to follow these style guides:
-http://www.python.org/dev/peps/pep-0008/
-http://google-styleguide.googlecode.com/svn/trunk/javascriptguide.xml
-http://google-styleguide.googlecode.com/svn/trunk/htmlcssguide.xml
+Try to follow these style guides:  
+http://www.python.org/dev/peps/pep-0008/  
+http://google-styleguide.googlecode.com/svn/trunk/javascriptguide.xml  
+http://google-styleguide.googlecode.com/svn/trunk/htmlcssguide.xml  
 And whatever other style guides there are out there for what you're writing in.
