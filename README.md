@@ -19,9 +19,10 @@ Resources/dependencies
 ----------------------
 Several royalty-free songs will be provided for demonstration purposes; the user will have the option to use files from his/her own music library.
 *   scipy/numpy (sudo apt-get install python-numpy python-scipy)
-*   pyaudio (sudo apt-get install python-pyaudio)
 *   matplotlib (sudo apt-get install python-matplotlib)
-*   audiolab (sudo easy_install scikits.audiolab)
+*   audiolab  
+    sudo apt-get install python-dev python-setuptools libsndfile-dev libasound2-dev
+    sudo easy_install scikits.audiolab
 It'll look something like [this](http://code.enthought.com/projects/chaco/pu-audio-spectrum.html).
 
 Current Features
