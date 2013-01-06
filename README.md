@@ -21,7 +21,7 @@ Several royalty-free songs will be provided for demonstration purposes; the user
 *   scipy/numpy (sudo apt-get install python-numpy python-scipy)
 *   pyaudio (sudo apt-get install python-pyaudio)
 *   matplotlib (sudo apt-get install python-matplotlib)
-
+*   audiolab (sudo easy_install scikits.audiolab)
 It'll look something like [this](http://code.enthought.com/projects/chaco/pu-audio-spectrum.html).
 
 Current Features

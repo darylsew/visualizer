@@ -47,6 +47,7 @@ print len(wyn)
 for i in range(0, len(wyn), 1):
     print wyn[i]
 """
+"""
 #Method 3
 import pyaudio
 import scipy
@@ -150,3 +151,29 @@ w = wckgraph.GraphWidget(root)
 w.pack(fill=BOTH, expand=1)
 go()
 mainloop()
+"""
+#Method 4
+import wave
+import struct
+import numpy as np
+from scipy.io import wavfile
+
+if __name__ == '__main__':
+    fname = "wubwub.wav"
+    frate, data = wavfile.read(fname)
+    #print data
+    w = np.fft.fft(data)
+    """
+    freqs = np.fft.fftfreq(len(w))
+    for i in range(len(freqs)):
+        freqs[i] = abs(freqs[i]*frate)
+    """
+    """
+    print (freqs.min(), freqs.max())
+
+    #Find the peak in the coefficients
+    idx = np.argmax(np.abs(w)**2)
+    freq=freqs[idx]
+    freq_in_hertz = abs(freq*frate)
+    print(freq_in_hertz)
+    """
