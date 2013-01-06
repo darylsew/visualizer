@@ -25,7 +25,7 @@ Several royalty-free songs will be provided for demonstration purposes; the user
 
 Current Features
 ----------------
-Create waveform and spectrogram images from a wav file using Short Time Fourier Transforms (provided by numpy). To test it, type 'python svt.py filename' and look at the pngs generated.
+Create waveform and spectrogram images from a wav file using Short Time Fourier Transforms (provided by numpy). To test it, type 'python svt.py -o 1 filename' and look at the pngs generated.
 
 Deadlines
 ---------
