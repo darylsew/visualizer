@@ -1,9 +1,9 @@
 Visualizer
 ==========
-*Group members:*
-*   pd6: Eric Cerny, Hon Wei Khor
 
-*   pd7: Daryl Sew, Peter Jasko
+### Group members:
+pd6: Eric Cerny, Hon Wei Khor  
+pd7: Daryl Sew, Peter Jasko
 
 What we're going to do:
 -----------------------
@@ -19,15 +19,13 @@ Resources/dependencies
 ----------------------
 Several royalty-free songs will be provided for demonstration purposes; the user will have the option to use files from his/her own music library.
 *   scipy/numpy (sudo apt-get install python-numpy python-scipy)
-*   matplotlib (sudo apt-get install python-matplotlib)
 *   audiolab  
     sudo apt-get install python-dev python-setuptools libsndfile-dev libasound2-dev
     sudo easy_install scikits.audiolab
-It'll look something like [this](http://code.enthought.com/projects/chaco/pu-audio-spectrum.html).
 
 Current Features
 ----------------
-Create waveform and spectrogram images from a wav file using Short Time Fourier Transforms (provided by numpy).
+Create waveform and spectrogram images from a wav file using Short Time Fourier Transforms (provided by numpy). To test it, type 'python svt.py filename' and look at the pngs generated.
 
 Deadlines
 ---------
@@ -46,7 +44,9 @@ Visualizers
 -----------
 <b>Everyone will write a visualizer.</b>
 *   Figure out what graphics libraries would be best used for visualization (html canvas, svg, javascript libraries like three.js, d3.js, raphael, etc); we might want to have some discussion about this.
-*   Write a function that takes frequency and volume as inputs, then draws cool stuff (this is the most important part of the project, as we're doing a music visualizer).
+*   Write a function that takes frequency and volume as inputs, then draws cool stuff (this is the most important part of the project, as we're doing a music visualizer).  
+    Note: I'm not completely sure what format frequencies will be in. Volume should be a floating point value from 0 to 1000 (or whatever range you like), but frequency is probably complicated.
+    I imagine a frequency sample would tell you the occurences of sounds within several frequency bins (i.e. 200Hz to 400Hz, 400Hz to 600Hz, etc) within the 200Hz to 22KHz range. Will figure it out soon. 
 *   If your function sucks, google stuff to figure out how to draw stuff that looks cooler. Check out other visualizers and try to make ours have effects comparable in quality/etc.
 *   Test it by making a tuple list of frequencies and volumes and running it on everything in the list (since sound file analysis stuff isn't done yet).
 
