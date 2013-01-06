@@ -27,7 +27,7 @@ It'll look something like [this](http://code.enthought.com/projects/chaco/pu-aud
 
 Current Features
 ----------------
-None yet.
+Create waveform and spectrogram images from a wav file using Short Time Fourier Transforms (provided by numpy).
 
 Deadlines
 ---------
