@@ -577,43 +577,12 @@ def create_png(input_filename, output_filename_w, output_filename_s, image_width
     print " done"
 
 
-def processWav(filename, channel, width):
+def processWav(filename):
     """
-    filename: path to a wav file
-    Channel: 1 for left, 2 for right
-    Width: A good default is 1650.
-    Returns centroids, frequencies, volumes
+    Given the filename of a wav file, returns the tuple (frequencies, amplitudes) of the wav file. I'll have to spend a bit more time reading this code in order to write this, though.
+    This tuple will serve as input for a visualizer.
     """
-    #open file
-    audio_file = audiolab.sndfile(filename, 'read')
-    #not really samples per pixel.
-    #should be length of audiofile in seconds * 60
-    samples_per_pixel = audio_file.get_nframes() / float(1650)
-    #some rule says this frequency has to be half of the sample rate
-    nyquist_freq = (audio_file.get_samplerate() / 2) + 0.0
-    #fft_size stays 4096
-    processor = AudioProcessor(audio_file, 4096, channel, numpy.hanning)
-    
-    centroids = []
-    frequencies = []
-    volumes = []
-
-    for x in range(width):
-        seek_point = int(x * samples_per_pixel)
-        next_seek_point = int((x + 1) * samples_per_pixel)
-        (spectral_centroid, db_spectrum) = processor.spectral_centroid(seek_point)
-        peaks = processor.peaks(seek_point, next_seek_point)
-        
-        centroids.append(spectral_centroid)
-        frequencies.append(db_spectrum)
-        volumes.append(peaks)
-    #print "Centroids:" + str(centroids)
-    #print "Frequencies:" + str(frequencies)
-    #print "Volumes:" + str(volumes)
-    for i in range(len(volumes)):
-        volumes[i] = abs(volumes[i][0]) + abs(volumes[i][1])
-
-    return centroids, frequencies, volumes
+    pass
 
  
 if __name__ == '__main__':
