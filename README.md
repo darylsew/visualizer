@@ -58,7 +58,9 @@ Individual Task Distribution
 *   Zach, obviously since you're not in our group, don't feel obligated to do anything, but any help is appreciated; would probably be most appropriate for you to help write an API so my project can interact with yours (and others'). This could potentially be very involved. IMO the coolest part of this project to work on is the visualization aspect so you'd probably rather have a little fun with that.
 *   Daryl will use numpy to extract the frequency and volume from sound files, and port this really cool liquid effect from his java physics simulator project from last year to Python/JavaScript.
 
-If it turns out that you guys have extra time after you've done your job, try to write another visualizer, improve yours (quality over quantity), or add other features (like interactivity, which we can discuss more later on in the project). We'll pick from the best once we have our stuff together. 
+If it turns out that you guys have extra time after you've done your job, try to write another visualizer, improve yours (quality over quantity), or add other features (like interactivity, which we can discuss more later on in the project). We'll pick from the best once we have our stuff together.
+
+If we have time, we'll integrate with the SoundCloud API, as done in [this](https://github.com/gattis/milkshake) visualizer. 
 
 Branch Workflow/Github Use
 --------------------------
