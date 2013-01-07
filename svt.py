@@ -31,6 +31,7 @@ The options the script takes are:
  <li>-h = image height in pixels (default 170)</li>
  <li>-f = fft size, power of 2 (default 2048)</li>
  <li>-m = maximum frequency to draw, in Hz (default 22050)</li>
+ <li>-o = 1 if you want to draw the waveform too
 </ul>
 """
  
