@@ -40,10 +40,12 @@ import scikits.audiolab as audiolab
 import ImageFilter, ImageChops, Image, ImageDraw, ImageColor
 import numpy
  
+#For music visualization, this class is more or less irrelevant.
 class TestAudioFile(object):
     """A class that mimics audiolab.sndfile but generates noise instead of reading
     a wave file. Additionally it can be told to have a "broken" header and thus crashing
     in the middle of the file. Also useful for testing ultra-short files of 20 samples."""
+
     def __init__(self, num_frames, has_broken_header=False):
         self.seekpoint = 0
         self.num_frames = num_frames
@@ -86,7 +88,8 @@ class AudioProcessor(object):
         self.higher_log = math.log10(self.higher)
         self.clip = lambda val, low, high: min(high, max(low, val))
         self.channel = channel
-
+    
+    #returns a number of samples from the audio file. 
     def read(self, start, size, resize_if_less=False):
         """ read size samples starting at start, if resize_if_less is True and less than size
         samples are read, resize the array to size and fill with zeros """
@@ -139,10 +142,20 @@ class AudioProcessor(object):
  
         return samples
  
- 
+    """
+    The spectral centroid is a measure used in digital signal processing to characterise
+    a spectrum. It indicates where the "center of mass" of the spectrum is. Perceptually,
+    it has a robust connection with the impression of "brightness" of a sound. It is calculated
+    as the weighted mean of the frequencies present in the signal, determined using a Fourier
+    transform, with their magnitudes as the wiehgts.
+    The spectral centroid is widely used in digital audio and music processing as an automatic
+    measure of musical timbre. -Wikipedia
+    
+    Probably extremely useful for visualization.
+    """
     def spectral_centroid(self, seek_point, spec_range=120.0):
         """ starting at seek_point read fft_size samples, and calculate the spectral centroid """
- 
+        
         samples = self.read(seek_point - self.fft_size/2, self.fft_size, True)
  
         samples *= self.window
@@ -169,7 +182,8 @@ class AudioProcessor(object):
  
         return (spectral_centroid, db_spectrum)
  
- 
+    #Goes through the samples and finds the min and max amplitudes; used to draw the waveform.
+    #This function is probably what I need to use to output amplitudes to a visualizer..
     def peaks(self, start_seek, end_seek):
         """ read all samples between start_seek and end_seek, then find the minimum and maximum peak
         in that range. Returns that pair in the order they were found. So if min was found first,
@@ -216,7 +230,7 @@ class AudioProcessor(object):
  
         return (min_value, max_value) if min_index < max_index else (max_value, min_value)
  
- 
+#not relevant to visualization
 def interpolate_colors(colors, flat=False, num_colors=256):
     """ given a list of colors, create a larger list of colors interpolating
     the first one. If flatten is True a list of numers will be returned. If
@@ -245,7 +259,6 @@ def interpolate_colors(colors, flat=False, num_colors=256):
             palette.append((int(r), int(g), int(b)))
  
     return palette
- 
  
 class WaveformImage(object):
     def __init__(self, image_width, image_height, palette):
@@ -500,12 +513,31 @@ class SpectrogramImage(object):
  
  
 def create_png(input_filename, output_filename_w, output_filename_s, image_width, image_height, fft_size, f_max, f_min, wavefile, palette, channel):
+    """
+    Given command line arguments this basically does everything.
+
+    WHAT I HAVE GATHERED:
+    db_spectrum has the frequencies of the sound file.
+    spectral_centroid tells us what the color of the sound is.
+    peaks tell us what the amplitude of the sound is.
+
+    Should be trivial to adapt this from image output to output
+    to our JavaScript visualizer now.
+    """
+    
     print "processing file %s:\n\t" % input_file,
  
-    audio_file = audiolab.sndfile(input_filename, 'read')
+    audio_file = audiolab.sndfile(input_filename, 'read')  #opens the wavfile; audio_file is an object now
  
     samples_per_pixel = audio_file.get_nframes() / float(image_width)
     nyquist_freq = (audio_file.get_samplerate() / 2) + 0.0
+    """
+    Initializes AudioProcessor class, which does FFT analysis and spits 
+    out amplitudes and frequencies to the SpectrogramImage and WaveformImage 
+    classes below later. For a stereo wav file, this selects a single channel 
+    to analyze. We might want to analyze both channels to give more input to
+    the visualizer,though.
+    """
     processor = AudioProcessor(audio_file, fft_size, channel, numpy.hanning)
  
     if wavefile==1:
@@ -513,18 +545,27 @@ def create_png(input_filename, output_filename_w, output_filename_s, image_width
     spectrogram = SpectrogramImage(image_width, image_height, fft_size, f_max, f_min, nyquist_freq, palette)
  
     for x in range(image_width):
- 
+        #shows progress
         if x % (image_width/10) == 0:
             sys.stdout.write('.')
             sys.stdout.flush()
  
         seek_point = int(x * samples_per_pixel)
         next_seek_point = int((x + 1) * samples_per_pixel)
- 
+        
         (spectral_centroid, db_spectrum) = processor.spectral_centroid(seek_point)
- 
+        
+        #let's have a look at the spectral centroid and the db_spectrum
+        #print "Spectral Centroid:" + str(spectral_centroid)
+        #print "DB Spectrum:" + str(db_spectrum)
+        
         if wavefile==1:
+            #aha! The peaks and spectral centroid make up the waveform.
+            #Since the spectral centroid indicates timbre (often referred to as color),
+            #it's probably what colors the waveform.
             peaks = processor.peaks(seek_point, next_seek_point)
+            #let's have a look at these peaks
+            #print "Peaks:" + str(peaks)
             waveform.draw_peaks(x, peaks, spectral_centroid)
  
         spectrogram.draw_spectrum(x, db_spectrum)
@@ -539,11 +580,13 @@ def create_png(input_filename, output_filename_w, output_filename_s, image_width
 def processWav(filename):
     """
     Given the filename of a wav file, returns the tuple (frequencies, amplitudes) of the wav file. I'll have to spend a bit more time reading this code in order to write this, though.
+    This tuple will serve as input for a visualizer.
     """
     pass
 
  
 if __name__ == '__main__':
+    #note: optparse is deprecated
     parser = optparse.OptionParser("usage: %prog [options] input-filename", conflict_handler="resolve")
     parser.add_option("-a", "--waveout", action="store", dest="output_filename_w", type="string", help="output waveform image (default input filename + _w.png)")
     parser.add_option("-o", "--wavefile", action="store", dest="wavefile", type="int", help="draw waveform image (yes:1, no: 0; default: no)")
@@ -558,7 +601,7 @@ if __name__ == '__main__':
     parser.add_option("-v", "--version", action="store_true", dest="version", help="display version information")
  
     parser.set_defaults(output_filename_w=None, output_filename_s=None, image_width=500, image_height=170, fft_size=2048, f_max=22050, f_min=10, wavefile=0, palette=1, channel=1)
- 
+    
     (options, args) = parser.parse_args()
  
     if not options.version:
@@ -580,7 +623,7 @@ if __name__ == '__main__':
  
 	        args = (input_file, output_file_w, output_file_s, options.image_width, options.image_height, options.fft_size, options.f_max, options.f_min, options.wavefile, options.palette, options.channel)
  
- 
+            #bam. work backwards from create_png in order to figure out how this program works`
 	    create_png(*args)
     else:
         print "\n svt version 0.4"
