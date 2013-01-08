@@ -587,8 +587,8 @@ def processWav(filename, channel, width):
     #open file
     audio_file = audiolab.sndfile(filename, 'read')
     #not really samples per pixel.
-    #should be length of audiofile in seconds * 60
-    samples_per_pixel = audio_file.get_nframes() / float(1650)
+    #should be length of audiofile in seconds * 60. will fix this later
+    samples_per_pixel = audio_file.get_nframes() / float(width)
     #some rule says this frequency has to be half of the sample rate
     nyquist_freq = (audio_file.get_samplerate() / 2) + 0.0
     #fft_size stays 4096

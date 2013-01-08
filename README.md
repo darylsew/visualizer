@@ -25,14 +25,13 @@ Several royalty-free songs will be provided for demonstration purposes; the user
 
 Current Features
 ----------------
-Create waveform and spectrogram images from a wav file using Short Time Fourier Transforms (provided by numpy). To test it, type 'python svt.py -o 1 filename' and look at the pngs generated.
-Compute spectral centroid (brightness/timbre/color of the sound), volume, and frequency data at any point in time in a wav file.
+Create waveform and spectrogram images from a wav file using Short Time Fourier Transforms (provided by numpy). To test it, type 'python svt.py -o 1 filename' and look at the pngs generated.  
+Compute spectral centroid (brightness/timbre/color of the sound), volume, and frequency data at any point in time in a wav file; uses svt.processWav(filename, channel, width). Filename is the path to a wav file, channel is 1 for the left channel and 2 for the right channel, and width shouldn't be a parameter but 1650 works (will fix this shortly). Returns centroids[], frequencies[][], volumes[].  
 
 Deadlines
 ---------
-1/7: At the very least, know what libraries you're using for your visualizer. I'll try to have the sound file analysis done by then.  
 1/9: Have a visualizer that can do something up on github.  
-1/12: Have a visualizer that is presentable (i.e. someone that looks at it will go wow, you wrote that?); sound file analysis will be done by now, take the frequency & volume parameters from a wav file of your choice (I've included a sample on the repo) and use that to generate the visualizations.  
+1/12: Have a visualizer that is presentable (i.e. someone that looks at it will go wow, you wrote that?); import svt and use centroids, frequencies, volumes = svt.wavProcess(filename, 1, 1650) to retrieve wav data. 
 1/14: Most changes to visualizers should be done by now; UI is done and sample songs have been chosen; an option for the user to upload a song from his/her own computer is provided; development now focuses on interactivity with the user and API. At this point, besides the README, ABSOLUTELY NOTHING should be pushed directly to master; all work done must be done in a branch and submitted with a pull request.  
 1/15: Continue adding API, interactivity, and/or other features. Eric, email zamansky asking him to set up all the dependencies (refer him to our README).  
 1/16: API should be complete and tested with other projects.  
@@ -45,11 +44,8 @@ Visualizers
 -----------
 <b>Everyone will write a visualizer.</b>
 *   Figure out what graphics libraries would be best used for visualization (html canvas, svg, javascript libraries like three.js, d3.js, raphael, etc); we might want to have some discussion about this.
-*   Write a function that takes frequency and volume as inputs, then draws cool stuff (this is the most important part of the project, as we're doing a music visualizer).  
-    Note: I'm not completely sure what format frequencies will be in. Volume should be a floating point value from 0 to 1000 (or whatever range you like), but frequency is probably complicated.
-    I imagine a frequency sample would tell you the occurences of sounds within several frequency bins (i.e. 200Hz to 400Hz, 400Hz to 600Hz, etc) within the 200Hz to 22KHz range. Will figure it out soon. 
+*   Write a function that takes inputs from wavProcess, then draws cool stuff (this is the most important part of the project, as we're doing a music visualizer).  
 *   If your function sucks, google stuff to figure out how to draw stuff that looks cooler. Check out other visualizers and try to make ours have effects comparable in quality/etc.
-*   Test it by making a tuple list of frequencies and volumes and running it on everything in the list (since sound file analysis stuff isn't done yet).
 
 Individual Task Distribution
 -----------------
@@ -61,7 +57,7 @@ Individual Task Distribution
 
 If it turns out that you guys have extra time after you've done your job, try to write another visualizer, improve yours (quality over quantity), or add other features (like interactivity, which we can discuss more later on in the project). We'll pick from the best once we have our stuff together.
 
-If we have time, we'll integrate with the SoundCloud API, as done in [this](https://github.com/gattis/milkshake) visualizer. 
+If we have time, we might integrate with the SoundCloud API, as done in [this](https://github.com/gattis/milkshake) visualizer. Or some other API.  
 
 Branch Workflow/Github Use
 --------------------------
