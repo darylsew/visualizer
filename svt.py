@@ -580,7 +580,6 @@ def processWav(filename, channel):
     """
     #open file
     audio_file = audiolab.sndfile(filename, 'read')
-    #not really samples per pixel.
     #should be length of audiofile in seconds * 60. will fix this later
     import contextlib
     import wave
@@ -588,9 +587,10 @@ def processWav(filename, channel):
         frames = f.getnframes()
         rate = f.getframerate()
         duration = frames / float(rate)
-    duration = int(duration)
-    duration *= 60
-    print duration
+    duration *= 60 #60 data points for every second of audio yay
+    duration = int(duration) #can only return an integer number of frames so yeah
+    #print duration
+    #Not really samples per pixel but I'll let that slide
     samples_per_pixel = audio_file.get_nframes() / float(duration)
     #some rule says this frequency has to be half of the sample rate
     nyquist_freq = (audio_file.get_samplerate() / 2) + 0.0
@@ -613,6 +613,8 @@ def processWav(filename, channel):
     #print "Centroids:" + str(centroids)
     #print "Frequencies:" + str(frequencies)
     #print "Volumes:" + str(volumes)
+    
+    #convert volumes[] from peaks to actual volumes
     for i in range(len(volumes)):
         volumes[i] = abs(volumes[i][0]) + abs(volumes[i][1])
 
