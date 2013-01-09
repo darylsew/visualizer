@@ -26,7 +26,7 @@ Several royalty-free songs will be provided for demonstration purposes; the user
 Current Features
 ----------------
 Create waveform and spectrogram images from a wav file using Short Time Fourier Transforms (provided by numpy). To test it, type 'python svt.py -o 1 filename' and look at the pngs generated.  
-Compute spectral centroid (brightness/timbre/color of the sound), volume, and frequency data at any point in time in a wav file; uses svt.processWav(filename, channel, width). Filename is the path to a wav file, channel is 1 for the left channel and 2 for the right channel, and width shouldn't be a parameter but 1650 works (will fix this shortly). Returns centroids[], frequencies[][], volumes[].  
+Compute spectral centroid (brightness/timbre/color of the sound), volume, and frequency data at any point in time in a wav file; uses svt.processWav(filename, channel). Filename is the path to a wav file, channel is 1 for the left channel and 2 for the right channel. Returns centroids[], frequencies[][], volumes[].  
 
 Deadlines
 ---------

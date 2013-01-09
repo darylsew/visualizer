@@ -1,10 +1,5 @@
 #!/usr/bin/env python
- 
-# svt.py -- sound visualization tool
-# Copyright (C) 2009 Luis J. Villanueva
-#
-#    This program is free software: you can redistribute it and/or modify
-#    it under the terms of the GNU General Public License as published by
+der the terms of the GNU General Public License as published by
 #    the Free Software Foundation, either version 3 of the License, or
 #    (at your option) any later version.
 # 
@@ -39,7 +34,7 @@ import optparse, math, sys
 import scikits.audiolab as audiolab
 import ImageFilter, ImageChops, Image, ImageDraw, ImageColor
 import numpy
- 
+
 #For music visualization, this class is more or less irrelevant.
 class TestAudioFile(object):
     """A class that mimics audiolab.sndfile but generates noise instead of reading
@@ -577,18 +572,26 @@ def create_png(input_filename, output_filename_w, output_filename_s, image_width
     print " done"
 
 
-def processWav(filename, channel, width):
+def processWav(filename, channel):
     """
     filename: path to a wav file
     Channel: 1 for left, 2 for right
-    Width: A good default is 1650.
     Returns centroids, frequencies, volumes
     """
     #open file
     audio_file = audiolab.sndfile(filename, 'read')
     #not really samples per pixel.
     #should be length of audiofile in seconds * 60. will fix this later
-    samples_per_pixel = audio_file.get_nframes() / float(width)
+    import contextlib
+    import wave
+    with contextlib.closing(wave.open(filename, 'r')) as f:
+        frames = f.getnframes()
+        rate = f.getframerate()
+        duration = frames / float(rate)
+    duration = int(duration)
+    duration *= 60
+    print duration
+    samples_per_pixel = audio_file.get_nframes() / float(duration)
     #some rule says this frequency has to be half of the sample rate
     nyquist_freq = (audio_file.get_samplerate() / 2) + 0.0
     #fft_size stays 4096
@@ -598,7 +601,7 @@ def processWav(filename, channel, width):
     frequencies = []
     volumes = []
 
-    for x in range(width):
+    for x in range(duration):
         seek_point = int(x * samples_per_pixel)
         next_seek_point = int((x + 1) * samples_per_pixel)
         (spectral_centroid, db_spectrum) = processor.spectral_centroid(seek_point)
