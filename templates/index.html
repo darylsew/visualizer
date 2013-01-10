@@ -5,9 +5,17 @@
 </head>
 <body>
     <script src="../static/three.min.js"></script>
+<!--Whee. Proof that the data got passed.-->
+{{centroids}}
+{{frequencies}}
+{{volumes}}
 
 <script>
-    //stuff goes here
+    //hopefully this works
+    var centroids = [{{centroids}}]
+    var frequencies = [{{frequencies}}]
+    var volumes = [{{volumes}}]
+    //yeeeah
     var scene = new THREE.Scene();
     var camera = new THREE.PerspectiveCamera(75,
     window.innerWidth/window.innerHeight, 0.1, 1000);
