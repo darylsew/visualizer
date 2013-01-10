@@ -18,11 +18,13 @@ Using scipy/numpy/assorted libraries for fourier transform analysis of wav files
 Resources/dependencies
 ----------------------
 Several royalty-free songs will be provided for demonstration purposes; the user will have the option to use files from his/her own music library.
+*   wave (sudo pip install wave) - this might have been already installed along with your Python distribution, though
 *   scipy/numpy (sudo apt-get install python-numpy python-scipy)
 *   audiolab  
     sudo apt-get install python-dev python-setuptools libsndfile-dev libasound2-dev  
     sudo easy_install scikits.audiolab
 
+NOTE: To enable WebGL rendering on Chrome, go to chrome://flags and enable 'Override software rendering list Mac, Windows, Linux, Chrome OS'
 Current Features
 ----------------
 Create waveform and spectrogram images from a wav file using Short Time Fourier Transforms (provided by numpy). To test it, type 'python svt.py -o 1 filename' and look at the pngs generated.  
@@ -31,7 +33,7 @@ Compute spectral centroid (brightness/timbre/color of the sound), volume, and fr
 Deadlines
 ---------
 1/9: Have a visualizer that can do something up on github.  
-1/12: Have a visualizer that is presentable (i.e. someone that looks at it will go wow, you wrote that?); import svt and use centroids, frequencies, volumes = svt.wavProcess(filename, 1, 1650) to retrieve wav data. 
+1/12: Have a visualizer that is presentable (i.e. someone that looks at it will go wow, you wrote that?); import svt and use centroids, frequencies, volumes = svt.wavProcess(filename, 1) to retrieve wav data. 
 1/14: Most changes to visualizers should be done by now; UI is done and sample songs have been chosen; an option for the user to upload a song from his/her own computer is provided; development now focuses on interactivity with the user and API. At this point, besides the README, ABSOLUTELY NOTHING should be pushed directly to master; all work done must be done in a branch and submitted with a pull request.  
 1/15: Continue adding API, interactivity, and/or other features. Eric, email zamansky asking him to set up all the dependencies (refer him to our README).  
 1/16: API should be complete and tested with other projects.  
@@ -64,7 +66,7 @@ Branch Workflow/Github Use
 Refer to my email to ml7 group about branching if you need a reference for Git branching.  
 Please write legitimate, detailed commit messages. If you don't, everyone will hate you.  
 DO NOT approve a pull request if code is not commented well (we're talking """ comment """ or /* comment */s everywhere- you should know what *every* function does) or if the request is not written up well.  
-If you choose to deny a pull request, be sure to detail your reasons why.  
+If you choose to deny a pull request, be sure to explain why.  
 Only approve a pull request after actually reviewing all of the changes and making a detailed comment; please don't approve your own pull requests.  
 
 There are better workflows we could use, but at this point I think it would be most appropriate to follow the same workflow we did in class (i.e. Daryl would do work in the git branch Daryl (regardless of what I'm working on), etc.). If the project gets larger and we continue working on it, we can switch to a better workflow.
