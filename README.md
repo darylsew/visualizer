@@ -40,7 +40,7 @@ Deadlines
 1/17: If the due date is the next day, devote this day to debugging; host the project on the server, pass it around, see what people think, see what errors they can find or find out if our README is good enough for someone without much background in technology.  
 1/18: Earliest possible project due date.  
 
-But please try to get things done a day or two before the above deadlines - we're on a tight schedule.
+But please try to get things done a day or two before the above deadlines - we're on a tight schedule. We are currently several days behind schedule.
 
 Visualizers
 -----------
