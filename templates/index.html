@@ -1,10 +1,12 @@
 <html>
 <head>
-<title>My first Three.js app</title>
+
+
 <style type ="text/css">
-html {
-background-image:url('../static/gun_metal.png');
-background-repeat:repeat;
+
+  html {
+  background-image:url('../static/gun_metal.png');
+  background-repeat:repeat;
 }
 
 body {
@@ -12,48 +14,76 @@ background-image:url('../static/gun_metal.png');
 background-repeat:repeat;
 }
 
+
+.top-rectangle{
+background-color:#000001;
+position:relative;
+left:100px;
+display: block;
+height: 100px ;
+width: 90%;
+opacity:.9;
+-moz-border-radius: 10px;
+-webkit-border-radius: 10px;
+-khtml-border-radius: 10px;
+border-radius: 10px;
+}
+
+.left-rectangle{
+  background-color:#000001;
+  display:block;
+  height:85%;
+  width:100px;
+  opacity:0.9;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -khtml-border-radius: 10px;
+  border-radius: 10px;
+}
 </style>
-
-
 </head>
+
 <body>
-    <script src="../static/three.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+<script src="jquery.mousewheel.min.js"></script>
+<script src="jquery.mCustomScrollbar.js"></script>
+<script src="../static/three.min.js"></script>
+
+
+<span class='top-rectangle'></span>
+<span class='left-rectangle'></span>
 
 <script>
-    //stuff goes here
-    var scene = new THREE.Scene();
-    var camera = new THREE.PerspectiveCamera(75,
-    window.innerWidth/window.innerHeight, 0.1, 1000);
+var mousey;
+ $(document).ready(function() {
 
-    var renderer = new THREE.WebGLRenderer();
-    renderer.setSize(window.innerWidth, window.innerHeight);
-    document.body.appendChild(renderer.domElement);
+//top rectangle fading out
+ $(".top-rectangle").mouseover(function(){
+$(".top-rectangle").fadeIn("fast");
+}).mouseout(function(){
+ $(".top-rectangle").slideUp("slow");})
+//right rectangle fading out
+ $(".left-rectangle").mouseover(function(){
+$(".left-rectangle").fadeIn("fast");
+}).mouseout(function(){
+ $(".left-rectangle").hide("slide");})});
 
-    var geometry = new THREE.CubeGeometry(1, 1, 1);
-    var material = new THREE.MeshBasicMaterial({color: 0x70ffbb});
-    var cube = new THREE.Mesh(geometry, material);
-    scene.add(cube)
+//fading in top rectangle
+$(document).mousemove(function(e){
+      if(e.pageY < 101){
+		   $(".top-rectangle").slideDown("slow");}
 
-    camera.position.z = 5;
-    
+   });
 
-    function render() {
-        requestAnimationFrame(render);
-        cube.rotation.x += 0.1;
-        cube.rotation.y += 0.1; 
-        renderer.render(scene, camera);
-    }
-    render()
+$(document).mousemove(function(e){
+      if(e.pageX < 101){
+                   $(".left-rectangle").hide("slide",{direction: "left"},{mode: "show"}).stop();}
+
+   });
+
 </script>
+
 </body>
 </html>
 
-
-
-{% extends "base.html" %}
-{% block title %}index title{%endblock%}
-
-{% block content %}
-
-{% endblock%}
-``
