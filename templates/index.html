@@ -7,7 +7,19 @@
     <script src="../static/three.min.js"></script>
 
 <script>
-    //stuff goes here
+    var centroids = {{centroids}}
+    var frequencies = {{frequencies}} //might not be valid
+    var volumes = {{volumes}}
+    //just uh
+    //test code and stuff
+    
+    for (var j=0;j<{{centroids}}.length;j++) {
+        //console.log(j)
+        console.log("Number:")
+        console.log({{frequencies[i]}})
+    }
+      
+    //end testcode
     var scene = new THREE.Scene();
     var camera = new THREE.PerspectiveCamera(75,
     window.innerWidth/window.innerHeight, 0.1, 1000);
@@ -23,6 +35,10 @@
 
     camera.position.z = 5;
     
+    function alertcentroid() {
+        alert("alertbox")
+    }
+
 
     function render() {
         requestAnimationFrame(render);
@@ -32,6 +48,7 @@
     }
     render()
 </script>
+<input type="button" onclick="alertcentroid()" value="Show Alert Box">
 </body>
 </html>
 

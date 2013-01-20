@@ -587,7 +587,7 @@ def processWav(filename, channel):
         frames = f.getnframes()
         rate = f.getframerate()
         duration = frames / float(rate)
-    duration *= 60 #60 data points for every second of audio yay
+    duration *= 30 #60 data points for every second of audio yay
     duration = int(duration) #can only return an integer number of frames so yeah
     #print duration
     #Not really samples per pixel but I'll let that slide
