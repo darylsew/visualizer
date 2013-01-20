@@ -40,13 +40,12 @@ Deadlines
 1/17: If the due date is the next day, devote this day to debugging; host the project on the server, pass it around, see what people think, see what errors they can find or find out if our README is good enough for someone without much background in technology.  
 1/18: Earliest possible project due date.  
 
-But please try to get things done a day or two before the above deadlines - we're on a tight schedule. We are currently several days behind schedule.
+Well, that didn't quite work out, did it... but okay. UI will be done 1/20, visualizers by 1/21, polishing & merging on 1/22.
 
 Visualizers
 -----------
 <b>Everyone will write a visualizer.</b>
-*   Figure out what graphics libraries would be best used for visualization (html canvas, svg, javascript libraries like three.js, d3.js, raphael, etc); we might want to have some discussion about this.
-*   Write a function that takes inputs from wavProcess, then draws cool stuff (this is the most important part of the project, as we're doing a music visualizer).  
+*   Write something in three.js that takes inputs from {{centroids}} {{frequencies}} and {{volumes}} and draws cool things based on them.
 *   If your function sucks, google stuff to figure out how to draw stuff that looks cooler. Check out other visualizers and try to make ours have effects comparable in quality/etc.
 
 Individual Task Distribution
@@ -55,7 +54,7 @@ Individual Task Distribution
 *   Eric, you are responsible for the README.md file and will update it as the UI is developed. It should have very clear, detailed instructions on how to use the visualizer (make no assumptions that the user knows stuff). Write a guide on how to set up all of our dependencies and include it in the README - you will email this to Zamansky a few days before the project deadline asking him to set things up on the ml7 server.
 *   Hon Wei will help me write the API so other sites can use our project.
 *   Zach, obviously since you're not in our group, don't feel obligated to do anything, but any help is appreciated; would probably be most appropriate for you to help write an API so my project can interact with yours (and others'). This could potentially be very involved. IMO the coolest part of this project to work on is the visualization aspect so you'd probably rather have a little fun with that.
-*   Daryl will use numpy to extract the frequency and volume from sound files, and port this really cool liquid effect from his java physics simulator project from last year to Python/JavaScript.
+*   Daryl will use numpy to extract the frequency and volume from sound files, and do a cubefield thing.
 
 If it turns out that you guys have extra time after you've done your job, try to write another visualizer, improve yours (quality over quantity), or add other features (like interactivity, which we can discuss more later on in the project). We'll pick from the best once we have our stuff together.
 

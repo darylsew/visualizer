@@ -8,15 +8,17 @@
 
 <script>
     var centroids = {{centroids}}
-    var frequencies = []
+    var frequencies = {{frequencies}} //might not be valid
     var volumes = {{volumes}}
     //just uh
     //test code and stuff
+    
     for (var j=0;j<{{centroids}}.length;j++) {
         //console.log(j)
         console.log("Number:")
         console.log({{frequencies[i]}})
-    }   
+    }
+      
     //end testcode
     var scene = new THREE.Scene();
     var camera = new THREE.PerspectiveCamera(75,
