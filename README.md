@@ -24,11 +24,12 @@ Several royalty-free songs will be provided for demonstration purposes; the user
     sudo apt-get install python-dev python-setuptools libsndfile-dev libasound2-dev  
     sudo easy_install scikits.audiolab
 
-NOTE: To enable WebGL rendering on Chrome, go to chrome://flags and enable 'Override software rendering list Mac, Windows, Linux, Chrome OS'
+NOTE: To enable WebGL rendering on Chrome, go to chrome://flags and enable 'Override software rendering list Mac, Windows, Linux, Chrome OS'  
+
 Current Features
 ----------------
-Create waveform and spectrogram images from a wav file using Short Time Fourier Transforms (provided by numpy). To test it, type 'python svt.py -o 1 filename' and look at the pngs generated.  
-Compute spectral centroid (brightness/timbre/color of the sound), volume, and frequency data at any point in time in a wav file; uses svt.processWav(filename, channel). Filename is the path to a wav file, channel is 1 for the left channel and 2 for the right channel. Returns centroids[], frequencies[][], volumes[].  
+Create waveform and spectrogram images from a wav file using Short Time Fourier Transforms (provided by numpy). To test it, type 'python svt.py -o 1 filename' and look at the pngs generated. Credit to the [Sound Viewer Tool] (https://github.com/ljvillanueva/Sound-Viewer-Tool).  
+Compute spectral centroid (brightness/timbre/color of the sound), volume, and frequency data at any point in time in a wav file; uses svt.processWav(filename, channel). Filename is the path to a wav file, channel is 1 for the left channel and 2 for the right channel. Returns centroids[], frequencies[][], volumes[].
 
 Deadlines
 ---------
@@ -48,6 +49,41 @@ Visualizers
 *   Write something in three.js that takes inputs from {{centroids}} {{frequencies}} and {{volumes}} and draws cool things based on them.
 *   If your function sucks, google stuff to figure out how to draw stuff that looks cooler. Check out other visualizers and try to make ours have effects comparable in quality/etc.
 
+Sample Data
+-----------
+###Frequencies 
+####[Graph generating code (for clarity)](http://i1322.photobucket.com/albums/u568/Daryl_LikeaBoshkosh/01bec08cb0a6d05f104275d7e1b4a851_zps121bea6a.png)    
+x axis is frequency, y axis is intensity, frame x == time; note that these are just 3 frames out of several thousand  
+[Frame 0](http://i1322.photobucket.com/albums/u568/Daryl_LikeaBoshkosh/0939260e5185fb361a324deb425a7b62_zpsb0621069.png)  
+[Frame 1](http://i1322.photobucket.com/albums/u568/Daryl_LikeaBoshkosh/32d96c138542e44a16131e0c8f1a5da1_zps1df88541.png)  
+[Frame 2](http://i1322.photobucket.com/albums/u568/Daryl_LikeaBoshkosh/44afd3166c1bf769f0265b182daefa89_zpsebc6790d.png) 
+
+###[Centroids](http://i1322.photobucket.com/albums/u568/Daryl_LikeaBoshkosh/Centroids_zpsca41372a.png)  
+x axis is time, y axis is brightness (low to high)
+###[Volumes](http://i1322.photobucket.com/albums/u568/Daryl_LikeaBoshkosh/Volumes_zps2785411e.png)  
+x axis is time, y axis is intensity (low to high)
+
+###Summary Statistics (calculated from wubwub.wav)
+####Volumes  
+Max: 1.33679199219  
+Avg: 0.815959368812  
+Min: 0.000152587890625  
+Std: 0.260528895602  
+Med: 0.83317565918  
+####Centroids  
+Max: 0.847659125302  
+Avg: 0.673952599689  
+Min: 0.144571311477  
+Std: 0.0656669159849  
+Med: 0.673928002227
+####Frequencies  
+Note: These are calculated for every frequency at every point in time.  
+Max: 0.852132088307  
+Avg: 0.280983495667  
+Min: 0.0  
+Std: 0.185711063639  
+Med: 0.343466281233  
+
 Individual Task Distribution
 -----------------
 *   Peter, it'd be great if you could write up your UI idea for everyone else, maybe draw the UI design and put the png on git or something; be prepared with a backup plan in case it's too hard to implement this one (i.e. we only come up with one visualizer, etcetc). You said you'd like to do the design so if you could start writing up the html/css/etc that'd be nice (twitter bootstrap stuff is set up in the repo). If you have time or if you feel like it, you can also write the visualizer but you don't have to (although I think you probably should as I doubt the web design will be that time-consuming). I like minimalism, like Kevin's new version of stuypulse or controlgroup.com- the appearance is really important, try to make it slick. I like [this](http://subtlepatterns.com) site's backgrounds.
@@ -62,9 +98,9 @@ If we have time, we might integrate with the SoundCloud API, as done in [this](h
 
 Branch Workflow/Github Use
 --------------------------
-Refer to my email to ml7 group about branching if you need a reference for Git branching.  
+Refer to my email to ml7 group about branching if you need a reference for Git branching, or to [this](http://byte.kde.org/~zrusin/git/git-cheat-sheet-medium.png).  
 Please write legitimate, detailed commit messages. If you don't, everyone will hate you.  
-DO NOT approve a pull request if code is not commented well (we're talking """ comment """ or /* comment */s everywhere- you should know what *every* function does) or if the request is not written up well.  
+DO NOT approve a pull request if code is not commented well (we're talking block comments/docstrings/etc everywhere- you should know what *every* function does) or if the request is not written up well.  
 If you choose to deny a pull request, be sure to explain why.  
 Only approve a pull request after actually reviewing all of the changes and making a detailed comment; please don't approve your own pull requests.  
 
