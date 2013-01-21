@@ -51,26 +51,38 @@ Visualizers
 
 Sample Data
 -----------
-###Frequencies graphs (x axis is frequency (lower==lower frequency), y axis is intensity, frame x == time)  
-[Graph generating code (for clarity)](http://speedcap.net/sharing/screen.php?id=files/01/be/01bec08cb0a6d05f104275d7e1b4a851.png)
-[Frame 0](http://speedcap.net/sharing/screen.php?id=files/09/39/0939260e5185fb361a324deb425a7b62.png)
-[Frame 1](http://speedcap.net/sharing/screen.php?id=files/32/d9/32d96c138542e44a16131e0c8f1a5da1.png)
-[Frame 2](http://speedcap.net/sharing/screen.php?id=files/44/af/44afd3166c1bf769f0265b182daefa89.png)
+###Frequencies 
+x axis is frequency, y axis is intensity, frame x == time; note that these are just 3 frames out of several thousand
+[Graph generating code (for clarity)](http://i1322.photobucket.com/albums/u568/Daryl_LikeaBoshkosh/01bec08cb0a6d05f104275d7e1b4a851_zps121bea6a.png)  
+[Frame 0](http://i1322.photobucket.com/albums/u568/Daryl_LikeaBoshkosh/0939260e5185fb361a324deb425a7b62_zpsb0621069.png)  
+[Frame 1](http://i1322.photobucket.com/albums/u568/Daryl_LikeaBoshkosh/32d96c138542e44a16131e0c8f1a5da1_zps1df88541.png)  
+[Frame 2](http://i1322.photobucket.com/albums/u568/Daryl_LikeaBoshkosh/44afd3166c1bf769f0265b182daefa89_zpsebc6790d.png) 
 
-###[Centroids](http://speedcap.net/sharing/screen.php?id=files/72/b7/72b7622809aeeb59f5b9227d2809c29f.png) (x axis is time, y axis is brightness (low to high))
-###[Volumes](http://speedcap.net/sharing/screen.php?id=files/ac/90/ac90d6b18c13225c781c77f81d7c220e.png) (x axis is time, y axis is intensity (low to high))
+###[Centroids](http://i1322.photobucket.com/albums/u568/Daryl_LikeaBoshkosh/Centroids_zpsca41372a.png)  
+x axis is time, y axis is brightness (low to high)
+###[Volumes](http://i1322.photobucket.com/albums/u568/Daryl_LikeaBoshkosh/Volumes_zps2785411e.png)  
+x axis is time, y axis is intensity (low to high)
 
-###Simple stats:
+###Summary Statistics (calculated from wubwub.wav)
 ####Volumes  
 Max: 1.33679199219  
 Avg: 0.815959368812  
 Min: 0.000152587890625  
+Std: 0.260528895602  
+Med: 0.83317565918  
 ####Centroids  
 Max: 0.847659125302  
 Avg: 0.673952599689  
 Min: 0.144571311477  
-Frequencies stats are kind of complicated so dwai.
-
+Std: 0.0656669159849  
+Med: 0.673928002227
+####Frequencies  
+Note: These are calculated for every frequency at every point in time.  
+Max: 0.852132088307  
+Avg: 0.280983495667  
+Min: 0.0  
+Std: 0.185711063639  
+Med: 0.343466281233  
 
 Individual Task Distribution
 -----------------
