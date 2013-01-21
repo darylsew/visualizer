@@ -98,9 +98,9 @@ If we have time, we might integrate with the SoundCloud API, as done in [this](h
 
 Branch Workflow/Github Use
 --------------------------
-Refer to my email to ml7 group about branching if you need a reference for Git branching.  
+Refer to my email to ml7 group about branching if you need a reference for Git branching, or to [this](http://byte.kde.org/~zrusin/git/git-cheat-sheet-medium.png).  
 Please write legitimate, detailed commit messages. If you don't, everyone will hate you.  
-DO NOT approve a pull request if code is not commented well (we're talking """ comment """ or /* comment */s everywhere- you should know what *every* function does) or if the request is not written up well.  
+DO NOT approve a pull request if code is not commented well (we're talking block comments/docstrings/etc everywhere- you should know what *every* function does) or if the request is not written up well.  
 If you choose to deny a pull request, be sure to explain why.  
 Only approve a pull request after actually reviewing all of the changes and making a detailed comment; please don't approve your own pull requests.  
 
