@@ -28,8 +28,20 @@ opacity:.5;
 -khtml-border-radius: 10px;
 border-radius: 10px;
 }
+.top-hidden-rectangle{
+background-color:#FFFFFF;
+position:relative;
+left:100px;
+display: block;
+height: 100px ;
+width: 90%;
+opacity:0;}
+
+
 
 .left-rectangle{
+position:absolute;
+top:10%;
   background-color:#FFFFFF;
   display:block;
   height:85%;
@@ -40,46 +52,125 @@ border-radius: 10px;
   -khtml-border-radius: 10px;
   border-radius: 10px;
 }
+
+#pulldown{
+position:absolute;
+top:0px;
+left:50%;
+}
+
+#pullright{
+position:absolute;
+top:50%;
+left:0px;
+}
+
+#tune_intro{
+color:#FFFFFF;
+font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+   font-weight: 300;
+
+}
+
+#visualizer_intro{
+color:#FFFFFF;
+font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida G\
+rande", sans-serif;
+   font-weight: 300;
+position:absolute;
+top:50%;
+left:20%;
+}
 </style>
 </head>
 
 <body>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
 <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
-<script src="jquery.mousewheel.min.js"></script>
-<script src="jquery.mCustomScrollbar.js"></script>
 <script src="../static/three.min.js"></script>
 
-
+<div id="tune_intro">
+<img src="../static/arrowright.png">
+Click here to select your music.
+</div>
+<div id="visualizer_intro">
+<img src="../static/arrowleft.png">
+And click here to select your visualizer.
+</div>
 <span class='top-rectangle'></span>
 <span class='left-rectangle'></span>
+<span class='left-hidden-rectangle'></span>
+<span class='top-hidden-rectangle'></span>
+
+<div id=pulldown >
+<center><img src = "../static/pulldown.jpg" height = "32px" width = "80px" ></center>
+</div>
+
+<div id=pullright >
+<img src = "../static/pullright.jpg" height = "80px" width = "32px" >
+</div>
 
 <script>
-var mousey;
- $(document).ready(function() {
+$("#tune_intro").hide();
+$("#tune_intro").fadeIn("slow");
+ var introNotDone = true;
+function hideLeft(){
+ $(".left-rectangle").hide("slide");
+$("#pullright").fadeIn();
 
-//top rectangle fading out
- $(".top-rectangle").mouseover(function(){}).mouseout(function(){
- $(".top-rectangle").slideUp("slow");})
-//right rectangle fading out
- $(".left-rectangle").mouseover(function(){}).mouseout(function(){
- $(".left-rectangle").hide("slide");})});
+}
+function hideTop(){
+ $(".top-rectangle").slideUp("slow");
+$("#pulldown").fadeIn();
+}
 
-//fading in top rectangle
-$(document).mousemove(function(e){
-      if(e.pageY < 101){
-		   $(".top-rectangle").slideDown("slow");}
+function showTop(){
+$(".top-rectangle").slideDown("slow");
+$("#pulldown").fadeOut();
+}
 
-   });
+function showLeft(){
+$(".left-rectangle").slideDown("slow");
+$("#pullright").fadeOut();
 
-$(document).mousemove(function(e){
-      if(e.pageX < 101){
-                   $(".left-rectangle").hide("slide",{direction: "left"},{mode: "show"}).stop();}
+}
 
-   });
+$(".left-rectangle").hide();
+$(".top-rectangle").hide();
+$("#visualizer_intro").hide();
+
+
+ $(".top-rectangle").mouseenter(function(){
+ }).mouseleave(function(){
+     hideTop();
+    });
+
+ $(".left-rectangle").mouseenter(function(){
+ }).mouseleave(function(){
+     hideLeft();
+    });
+
+$("#pulldown").click(function() {
+  showTop();
+$("#tune_intro").fadeOut();
+if(introNotDone){
+$("#visualizer_intro").fadeIn("slow");
+introNotDone = false;
+}
+});
+
+$("#pullright").click(function() {
+  showLeft();
+ $("#visualizer_intro").fadeOut();
+
+});
+
 
 </script>
 
+
+
+</script>
 </body>
 </html>
 
