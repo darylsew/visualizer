@@ -4,7 +4,7 @@ setTimeout(function(){$("#logo").fadeOut()
 	    $("#tune_intro").fadeIn("slow");},2000);
 //Hides the tune arrow before it is shown.
 $("#tune_intro").hide();
-$("#reg1").hide();
+
 //Hides and shows the left and top bars
 
 function hideLeft(){
@@ -19,7 +19,6 @@ function hideTop(){
 
 function showTop(){
     $(".top-rectangle").slideDown("slow");
-
     $("#pulldown").fadeOut();}
 
 function showLeft(){
