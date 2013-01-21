@@ -24,11 +24,12 @@ Several royalty-free songs will be provided for demonstration purposes; the user
     sudo apt-get install python-dev python-setuptools libsndfile-dev libasound2-dev  
     sudo easy_install scikits.audiolab
 
-NOTE: To enable WebGL rendering on Chrome, go to chrome://flags and enable 'Override software rendering list Mac, Windows, Linux, Chrome OS'
+NOTE: To enable WebGL rendering on Chrome, go to chrome://flags and enable 'Override software rendering list Mac, Windows, Linux, Chrome OS'  
+
 Current Features
 ----------------
-Create waveform and spectrogram images from a wav file using Short Time Fourier Transforms (provided by numpy). To test it, type 'python svt.py -o 1 filename' and look at the pngs generated.  
-Compute spectral centroid (brightness/timbre/color of the sound), volume, and frequency data at any point in time in a wav file; uses svt.processWav(filename, channel). Filename is the path to a wav file, channel is 1 for the left channel and 2 for the right channel. Returns centroids[], frequencies[][], volumes[].  
+Create waveform and spectrogram images from a wav file using Short Time Fourier Transforms (provided by numpy). To test it, type 'python svt.py -o 1 filename' and look at the pngs generated. Credit to the [Sound Viewer Tool] (https://github.com/ljvillanueva/Sound-Viewer-Tool).  
+Compute spectral centroid (brightness/timbre/color of the sound), volume, and frequency data at any point in time in a wav file; uses svt.processWav(filename, channel). Filename is the path to a wav file, channel is 1 for the left channel and 2 for the right channel. Returns centroids[], frequencies[][], volumes[].
 
 Deadlines
 ---------
@@ -47,6 +48,29 @@ Visualizers
 <b>Everyone will write a visualizer.</b>
 *   Write something in three.js that takes inputs from {{centroids}} {{frequencies}} and {{volumes}} and draws cool things based on them.
 *   If your function sucks, google stuff to figure out how to draw stuff that looks cooler. Check out other visualizers and try to make ours have effects comparable in quality/etc.
+
+Sample Data
+-----------
+###Frequencies graphs (x axis is frequency (lower==lower frequency), y axis is intensity, frame x == time)  
+[Graph generating code (for clarity)](http://speedcap.net/sharing/screen.php?id=files/01/be/01bec08cb0a6d05f104275d7e1b4a851.png)
+[Frame 0](http://speedcap.net/sharing/screen.php?id=files/09/39/0939260e5185fb361a324deb425a7b62.png)
+[Frame 1](http://speedcap.net/sharing/screen.php?id=files/32/d9/32d96c138542e44a16131e0c8f1a5da1.png)
+[Frame 2](http://speedcap.net/sharing/screen.php?id=files/44/af/44afd3166c1bf769f0265b182daefa89.png)
+
+###[Centroids](http://speedcap.net/sharing/screen.php?id=files/72/b7/72b7622809aeeb59f5b9227d2809c29f.png) (x axis is time, y axis is brightness (low to high))
+###[Volumes](http://speedcap.net/sharing/screen.php?id=files/ac/90/ac90d6b18c13225c781c77f81d7c220e.png) (x axis is time, y axis is intensity (low to high))
+
+###Simple stats:
+####Volumes  
+Max: 1.33679199219  
+Avg: 0.815959368812  
+Min: 0.000152587890625  
+####Centroids  
+Max: 0.847659125302  
+Avg: 0.673952599689  
+Min: 0.144571311477  
+Frequencies stats are kind of complicated so dwai.
+
 
 Individual Task Distribution
 -----------------

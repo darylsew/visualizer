@@ -1,4 +1,5 @@
-#Example of how to extract data from a wav file using the modified library we wrote
+#Example of how to extract data from a wav file using the modified svt library.
+#Also useful for graphing or playing around with data.
 import svt
 import matplotlib
 from matplotlib import pyplot
@@ -6,6 +7,8 @@ import pylab
 from mpl_toolkits.mplot3d import Axes3D
 import random
 import numpy
+
+#The line needed to get data from the first channel.
 centroids, frequencies, volumes = svt.processWav("wubwub.wav", 1)
 """
 Frequencies graphs (x axis is frequency (lower==lower frequency), y axis is intensity, frame x == time)
@@ -24,10 +27,21 @@ http://speedcap.net/sharing/screen.php?id=files/72/b7/72b7622809aeeb59f5b9227d28
 Volumes graph (x axis is time, y axis is intensity (low to high))
 http://speedcap.net/sharing/screen.php?id=files/ac/90/ac90d6b18c13225c781c77f81d7c220e.png
 
+Simple stats:
+Volumes
+Max: 1.33679199219
+Avg: 0.815959368812
+Min: 0.000152587890625
+Centroids
+Max: 0.847659125302
+Avg: 0.673952599689
+Min: 0.144571311477
+Frequencies stats are kind of complicated so dwai.
 """
 
 
 """
+#Samples some of the data.
 print centroids[1]
 print frequencies[1]
 print volumes[1]
@@ -35,7 +49,7 @@ print volumes[1]
 for i in range(0, int(len(frequencies[1])/20)):
     print frequencies[1][i]
 """
-
+#Graphs frequencies, centroids, and volumes on 2d plots; frequencies should really be 3d but I can't figure out how to 3d graph them so a number of 2d graphs should suffice for understanding the data.
 #numbers = []
 #for i in range(len(frequencies[1])):
 #    numbers.append(i)
@@ -51,6 +65,7 @@ for i in range(0, int(len(frequencies[1])/20)):
 #matplotlib.pyplot.show()
 
 """
+#Failed 3d graph code
 fig = pylab.figure()
 ax = Axes3D(fig)
 
@@ -66,6 +81,7 @@ ax.scatter(sequence_containing_x_vals, sequence_containing_y_vals, sequence_cont
 pyplot.show()
 """
 """
+#File IO. Resulting files are way too large (well, the frequencies file, which is ~136MB). Will truncate frequencies/compress data some other way.
 f = open("volumes.txt", 'w')
 for item in volumes:
     print>>f, item
@@ -82,6 +98,7 @@ for i in range(len(frequencies)):
 f.close()
 """
 """
+#Simple statistics
 print "Volumes"
 print "Max: " + str(max(volumes))
 print "Avg: " + str(numpy.mean(volumes))
