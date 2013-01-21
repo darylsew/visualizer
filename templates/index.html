@@ -22,7 +22,7 @@ left:100px;
 display: block;
 height: 100px ;
 width: 90%;
-opacity:.5;
+opacity:.9;
 -moz-border-radius: 10px;
 -webkit-border-radius: 10px;
 -khtml-border-radius: 10px;
@@ -62,9 +62,62 @@ left:50%;
 #pullright{
 position:absolute;
 top:50%;
-left:0px;
+left:0px;}
+
+#logo{
+position:relative;
+top:50%;
+ 
 }
 
+#reg1{
+ position:absolute;
+ top:10px;
+ left:10%;
+z-index:1000;
+ }
+
+#reg2{
+position:absolute;
+top:10px;
+left:20%;
+}
+
+#wormhole{
+position:absolute;
+top:10px;
+left:30%;
+}
+
+#river{
+position:absolute;
+top:10px;
+left:40%;
+}
+
+#starstuff{
+position:absolute;
+top:10px;
+left:50%;
+}
+
+#cyprus{
+position:absolute;
+top:10px;
+left:60%;
+}
+
+#sands{
+position:absolute;
+top:10px;
+left:70%;
+}
+
+#dubstep{
+position:absolute;
+top:10px;
+left:80%;
+}
 #tune_intro{
 color:#FFFFFF;
 font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
@@ -82,12 +135,18 @@ top:50%;
 left:20%;
 }
 </style>
-</head>
-
-<body>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
+  <script type="text/javascript" src="../static/jquery.jplayer.min.js"></script>
+
+</head>
+ 
+<body>
+
+
 <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
 <script src="../static/three.min.js"></script>
+
+<center><img src="../static/logo.jpg" id="logo" ></center>
 
 <div id="tune_intro">
 <img src="../static/arrowright.png">
@@ -97,7 +156,21 @@ Click here to select your music.
 <img src="../static/arrowleft.png">
 And click here to select your visualizer.
 </div>
-<span class='top-rectangle'></span>
+
+
+
+
+<div  class='top-rectangle'>
+<img src = "../static/reggaerecruit.png" width = "80px" height = "80px" id = "reg1">
+<img src = "../static/regparty.jpg" width = "80px" height = "80px" id = "reg2">
+<img src = "../static/wormhole.jpg" width = "80px" height = "80px" id = "wormhole">
+<img src = "../static/river.jpg" width = "80px" height = "80px" id = "river">
+<img src = "../static/starstuff.jpg" width = "80px" height = "80px" id = "starstuff">
+<img src = "../static/cyprus.jpg" width = "80px" height = "80px" id = "cyprus">
+<img src = "../static/sands.jpg" width = "80px" height = "80px" id = "sands">
+<img src = "../static/dubstep.png" width = "80px" height = "80px" id = "dubstep">
+</div>
+
 <span class='left-rectangle'></span>
 <span class='left-hidden-rectangle'></span>
 <span class='top-hidden-rectangle'></span>
@@ -110,67 +183,12 @@ And click here to select your visualizer.
 <img src = "../static/pullright.jpg" height = "80px" width = "32px" >
 </div>
 
-<script>
-$("#tune_intro").hide();
-$("#tune_intro").fadeIn("slow");
- var introNotDone = true;
-function hideLeft(){
- $(".left-rectangle").hide("slide");
-$("#pullright").fadeIn();
+<div id="music">
 
-}
-function hideTop(){
- $(".top-rectangle").slideUp("slow");
-$("#pulldown").fadeIn();
-}
-
-function showTop(){
-$(".top-rectangle").slideDown("slow");
-$("#pulldown").fadeOut();
-}
-
-function showLeft(){
-$(".left-rectangle").slideDown("slow");
-$("#pullright").fadeOut();
-
-}
-
-$(".left-rectangle").hide();
-$(".top-rectangle").hide();
-$("#visualizer_intro").hide();
+</div>
 
 
- $(".top-rectangle").mouseenter(function(){
- }).mouseleave(function(){
-     hideTop();
-    });
-
- $(".left-rectangle").mouseenter(function(){
- }).mouseleave(function(){
-     hideLeft();
-    });
-
-$("#pulldown").click(function() {
-  showTop();
-$("#tune_intro").fadeOut();
-if(introNotDone){
-$("#visualizer_intro").fadeIn("slow");
-introNotDone = false;
-}
-});
-
-$("#pullright").click(function() {
-  showLeft();
- $("#visualizer_intro").fadeOut();
-
-});
-
-
-</script>
-
-
-
-</script>
+<script src="../static/pageActions.js"></script>
 </body>
 </html>
 
