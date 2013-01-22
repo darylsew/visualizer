@@ -617,7 +617,10 @@ def processWav(filename, channel):
     #convert volumes[] from peaks to actual volumes
     for i in range(len(volumes)):
         volumes[i] = abs(volumes[i][0]) + abs(volumes[i][1])
-
+    #round frequencies to save resources
+    for i in range(len(frequencies)):
+        for j in range(len(frequencies[i])):
+            frequencies[i][j] = round(frequencies[i][j], 4)
     return centroids, frequencies, volumes
 
  

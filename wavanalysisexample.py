@@ -50,7 +50,6 @@ random.shuffle(sequence_containing_z_vals)
 ax.scatter(sequence_containing_x_vals, sequence_containing_y_vals, sequence_containing_z_vals)
 pyplot.show()
 """
-"""
 #File IO. Resulting files are way too large (well, the frequencies file, which is ~136MB). Will truncate frequencies/compress data some other way.
 f = open("volumes.txt", 'w')
 for item in volumes:
@@ -66,8 +65,6 @@ for i in range(len(frequencies)):
     for item in frequencies[i]:
         print>>f, item
 f.close()
-"""
-"""
 #Simple statistics
 
 print "Volumes"
@@ -93,4 +90,3 @@ print "Avg: " + str(numpy.mean(q))
 print "Min: " + str(min(q))
 print "Std: " + str(numpy.std(q))
 print "Med: " + str(numpy.median(q))
-"""
