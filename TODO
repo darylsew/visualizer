@@ -1,0 +1,2 @@
+I am going to make a spectrum analyzer like http://fc05.deviantart.net/fs26/f/2008/128/9/8/Spectrum_Analyzer_by_yamogogy.png
+it'll be a 2d array of cubes. "Turned off" cubes will just be white and i'll turn on cubes based on frequency and volume. I'll average the frequencies and put them in a 1d array (curate to 30fps). The biggest frequency will have the greatest number of cubes turn on, and columns around it will be shorter. Higher volume means higher stack of turned on (colored) cubes. Above a certain volume and they'll be a different color.
