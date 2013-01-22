@@ -23,9 +23,9 @@
 		litdist = 350;//D_(lit to <0,0,0>)
 		camdist = 1200;//D_(cam to <0,0,0>)
 		startTime = Date.now();
-		centroids = {{centroids}};
-		volumes = {{volumes}};
-		frequencies = {{frequencies}};
+		centroids = '{{centroids}}';
+		volumes = '{{volumes}}';
+		frequencies = '{{frequencies}}';
 		counter = 0;
 		maxlen = centroids.length;
 		material = new THREE.MeshLambertMaterial( {color: 0xff8800} );
@@ -137,7 +137,6 @@
 		camreposition();
 		lightrepos();
         renderer.render( scene, camera );
-    }
-</script>
+    }</script>
 </body>
 </html>
