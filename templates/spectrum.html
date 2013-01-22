@@ -9,6 +9,34 @@
 <script src="../static/three.min.js"></script>
 
 <script>
+    var centroids = '{{centroids}}';
+    var curated_centroids = new Array(centroids.length * 2);
+    for (var i = 0; i<curated_centroids.length; i++) { // convert to 60fps
+	curated_centroids[i] = centroids[i-i%2];
+	curated_centroids[i] = curated_centroids[i];
+    }
+    var frequencies = '{{frequencies}}';
+    var curated_frequencies = new Array(frequencies.length * 2);
+    for (var i = 0; i<frequencies.length; i++) {
+	var sum = 0;
+	for (var j = 0; j<frequencies[i].length; j++) {
+	    sum += frequencies[i][j];
+	}
+	curated_frequencies[2*i] = sum / frequencies[i].length;
+    }
+    for (var i = 0; i<curated_frequencies.length; i++) {
+	curated_frequencies[i] = curated_frequencies[i-i%2];
+	curated_frequencies[i] = Math.floor(curated_frequencies[i] * 14);
+    }
+  console.log(curated_frequencies);
+
+    var vols = '{{volumes}}';
+    var curated_vols = new Array(vols.length * 2);
+    for (var i = 0; i<curated_vols.length; i++) {
+	curated_vols[i] = vols[i-i%2];
+	curated_vols[i] = Math.floor(curated_vols[i] * 9);
+    }
+
     var scene = new THREE.Scene();
 
     var scene_WID = 800;
@@ -59,34 +87,6 @@
     }
 
 
-    var centroids = '{{centroids}}';
-    var curated_centroids = new Array(centroids.length * 2);
-    for (var i = 0; i<curated_centroids.length; i++) { // convert to 60fps
-	curated_centroids[i] = centroids[i-i%2];
-	curated_centroids[i] = curated_centroids[i];
-    }
-    var frequencies = '{{frequencies}}';
-    var curated_frequencies = new Array(frequencies.length * 2);
-    for (var i = 0; i<frequencies.length; i++) {
-	var sum = 0;
-	for (var j = 0; j<frequencies[i].length; j++) {
-	    sum += frequencies[i][j];
-	}
-	curated_frequencies[2*i] = sum / frequencies[i].length;
-    }
-  console.log(curated_frequencies);
-    for (var i = 0; i<curated_frequencies.length; i++) {
-	curated_frequencies[i] = curated_frequencies[i-i%2];
-	curated_frequencies[i] = Math.floor(curated_frequencies[i] * 14);
-    }
-
-    var vols = '{{volumes}}';
-    var curated_vols = new Array(vols.length * 2);
-    for (var i = 0; i<curated_vols.length; i++) {
-	curated_vols[i] = vols[i-i%2];
-	curated_vols[i] = Math.floor(curated_vols[i] * 9);
-    }
-
     function light_column(freq, vol) {
 	for (var i = 0; i<=vol; i++) {
 	    if (i >= 0.7*height) {
@@ -127,14 +127,14 @@
     function render() {
 	requestAnimationFrame(render);
 	renderer.render(scene,camera);
-	camera.position.x = 3*Math.cos(index/200);
-	camera.position.y = 3*Math.sin(index/200);
-	if (index < curated_vols.length) {
-	    spotlight.position.z = 30 + 60*curated_centroids[index];
-	    camera.lookAt(new THREE.Vector3(0 ,0,0));
-	    light_region(curated_frequencies[index],curated_vols[index]);
-	}
-	index++;
+//	camera.position.x = 3*Math.cos(index/200);
+//	camera.position.y = 3*Math.sin(index/200);
+//	if (index < curated_vols.length) {
+//	    spotlight.position.z = 30 + 60*curated_centroids[index];
+//	    camera.lookAt(new THREE.Vector3(0 ,0,0));
+//	    light_region(curated_frequencies[index],curated_vols[index]);
+// 	}
+//	index++;
     }
 
     render();
