@@ -587,7 +587,7 @@ def processWav(filename, channel):
         frames = f.getnframes()
         rate = f.getframerate()
         duration = frames / float(rate)
-    duration *= 30 #60 data points for every second of audio yay
+    duration *= 30 #30 data points for every second of audio yay
     duration = int(duration) #can only return an integer number of frames so yeah
     #print duration
     #Not really samples per pixel but I'll let that slide
@@ -595,7 +595,7 @@ def processWav(filename, channel):
     #some rule says this frequency has to be half of the sample rate
     nyquist_freq = (audio_file.get_samplerate() / 2) + 0.0
     #fft_size stays 4096
-    processor = AudioProcessor(audio_file, 4096, channel, numpy.hanning)
+    processor = AudioProcessor(audio_file, 512, channel, numpy.hanning)
     
     centroids = []
     frequencies = []
