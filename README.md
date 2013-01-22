@@ -23,6 +23,7 @@ Several royalty-free songs will be provided for demonstration purposes; the user
 *   audiolab  
     sudo apt-get install python-dev python-setuptools libsndfile-dev libasound2-dev  
     sudo easy_install scikits.audiolab
+*   sudo apt-get install chromium-codecs-ffmpeg-extra(for users of chromium in linux)
 
 NOTE: To enable WebGL rendering on Chrome, go to chrome://flags and enable 'Override software rendering list Mac, Windows, Linux, Chrome OS'  
 
