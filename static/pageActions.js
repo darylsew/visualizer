@@ -41,14 +41,14 @@ $(".top-rectangle").mouseenter(function(){
 
 //Sets variables to be associated with files
 var audio = new Audio();
-var reg1Audio = new Audio("../static/reg1.wav");
-var reg2Audio = new Audio("../static/reg2.wav");
-var starstuffAudio = new Audio("../static/starstuff.wav");
-var superpositionAudio = new Audio("../static/superposition.wav");
-var cyprusAudio = new Audio("../static/cyprus.wav");
-var sandsAudio = new Audio("../static/sands.wav");
-var dubstepAudio = new Audio("../static/dubstep.wav");
-var riverAudio = new Audio("../static/river.wav");
+var reg1Audio = new Audio("../static/reg1.mp3");
+var reg2Audio = new Audio("../static/reg2.mp3");
+var starstuffAudio = new Audio("../static/starstuff.mp3");
+var superpositionAudio = new Audio("../static/superposition.mp3");
+var cyprusAudio = new Audio("../static/cyprus.mp3");
+var sandsAudio = new Audio("../static/sands.mp3");
+var dubstepAudio = new Audio("../static/dubstep.mp3");
+var riverAudio = new Audio("../static/river.mp3");
 
 
 function play(){
