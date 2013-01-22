@@ -14,7 +14,6 @@ background-image:url('../static/gun_metal.png');
 background-repeat:repeat;
 }
 
-
 .top-rectangle{
 background-color:#FFFFFF;
 position:relative;
@@ -30,7 +29,7 @@ border-radius: 10px;
 }
 .top-hidden-rectangle{
 background-color:#FFFFFF;
-position:relative;
+position:absolute;
 left:100px;
 display: block;
 height: 100px ;
@@ -65,8 +64,9 @@ top:50%;
 left:0px;}
 
 #logo{
-position:relative;
-top:50%;
+position:absolute;
+left:25%;
+top:35%;
  
 }
 
@@ -119,6 +119,7 @@ top:10px;
 left:80%;
 }
 #tune_intro{
+position:absolute;
 color:#FFFFFF;
 font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
    font-weight: 300;
@@ -134,14 +135,40 @@ position:absolute;
 top:50%;
 left:20%;
 }
+
+#visualizer{
+position:absolute;
+
+}
+
+#about{
+position:absolute;
+top:95%;
+left:0%;
+}
+
+#textbox{
+position:absolute;
+top:85%;
+left:0%;
+padding:2px 6px 4px 6px; 
+color: #0000001;
+font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida G\                                                                                                                                   
+rande", sans-serif;
+background-color: #7F7F7F;}
+
+
+
 </style>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
-  <script type="text/javascript" src="../static/jquery.jplayer.min.js"></script>
+
+
 
 </head>
  
 <body>
 
+<img src="../static/about.png" id="about" width = "53px" height = "21px">
 
 <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
 <script src="../static/three.min.js"></script>
@@ -156,6 +183,7 @@ Click here to select your music.
 <img src="../static/arrowleft.png">
 And click here to select your visualizer.
 </div>
+
 
 
 
@@ -183,10 +211,19 @@ And click here to select your visualizer.
 <img src = "../static/pullright.jpg" height = "80px" width = "32px" >
 </div>
 
+<span id="visualizer">
+<script> var scene = new THREE.Scene(); var camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);  var renderer = new THREE.WebGLRenderer(); renderer.setSize(window.innerWidth, window.innerHeight); document.body.appendChild(renderer.domElement);  var geometry = new THREE.CubeGeometry(1,1,1); var material = new THREE.MeshBasicMaterial({color: 0x00ff00}); var cube = new THREE.Mesh(geometry, material); scene.add(cube);  camera.position.z = 5;  function render() { requestAnimationFrame(render);  cube.rotation.x += 0.1; cube.rotation.y += 0.1;  renderer.render(scene, camera); } render(); </script>
+</span>
 <div id="music">
 
 </div>
 
+<div id = "textbox">
+Pineapple was created by Daryl Sew, Peter Jasko, Eric Cerny, and Hon Wei Khor. <br>
+Visualizers are done using three.js.<br>
+Code is available at <a href=" http://github.com/stuycs-ml7-projects/visualizer">http://github.com/stuycs-ml7-projects/visualizer</a>.<br>
+Click this textbox to close it.
+ </div>
 
 <script src="../static/pageActions.js"></script>
 </body>

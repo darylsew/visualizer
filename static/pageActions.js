@@ -25,11 +25,13 @@ function showLeft(){
     $(".left-rectangle").slideDown("slow");
     $("#pullright").fadeOut();}
 
+
+
 //Hides all the bars by default as you first load the page.
 $(".left-rectangle").hide();
 $(".top-rectangle").hide();
 $("#visualizer_intro").hide();
-
+$("#textbox").hide();
 //Hides the top and left bars once your mouse leaves their area.
 $(".top-rectangle").mouseenter(function(){
     }).mouseleave(function(){
@@ -131,3 +133,15 @@ $("#pulldown").click(function() {
 $("#pullright").click(function() {
 	showLeft();
 	$("#visualizer_intro").fadeOut();});
+
+$("#about").click(function(){
+	$("#about").hide("slide");
+	$("#textbox").fadeIn();
+    });
+
+$("#textbox").click(function(){
+        $("#textbox").hide("slide");
+	$("#about").fadeIn("slow");
+
+    });
+
