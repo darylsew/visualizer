@@ -1,0 +1,256 @@
+<html>
+<head>
+
+
+<style type ="text/css">
+
+  html {
+  background-image:url('../static/gun_metal.png');
+  background-repeat:repeat;
+}
+
+body {
+background-image:url('../static/gun_metal.png');
+background-repeat:repeat;
+}
+
+.top-rectangle{
+background-color:#FFFFFF;
+position:relative;
+left:100px;
+display: block;
+height: 100px ;
+width: 90%;
+opacity:.9;
+-moz-border-radius: 10px;
+-webkit-border-radius: 10px;
+-khtml-border-radius: 10px;
+border-radius: 10px;
+}
+.top-hidden-rectangle{
+background-color:#FFFFFF;
+position:absolute;
+left:100px;
+display: block;
+height: 100px ;
+width: 90%;
+opacity:0;}
+
+
+
+.left-rectangle{
+position:absolute;
+top:10%;
+  background-color:#FFFFFF;
+  display:block;
+  height:85%;
+  width:100px;
+  opacity:0.5;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -khtml-border-radius: 10px;
+  border-radius: 10px;
+}
+
+#pulldown{
+position:absolute;
+top:0px;
+left:50%;
+}
+
+#pullright{
+position:absolute;
+top:50%;
+left:0px;}
+
+#logo{
+position:absolute;
+left:25%;
+top:35%;
+ 
+}
+
+#reg1{
+ position:absolute;
+ top:10px;
+ left:10%;
+
+ }
+
+#reg2{
+position:absolute;
+top:10px;
+left:20%;
+}
+
+#wormhole{
+position:absolute;
+top:10px;
+left:30%;
+}
+
+#river{
+position:absolute;
+top:10px;
+left:40%;
+}
+
+#starstuff{
+position:absolute;
+top:10px;
+left:50%;
+}
+
+#cyprus{
+position:absolute;
+top:10px;
+left:60%;
+}
+
+#sands{
+position:absolute;
+top:10px;
+left:70%;
+}
+
+#dubstep{
+position:absolute;
+top:10px;
+left:80%;
+}
+
+#visual1{
+position:absolute;
+top:8%;
+left:10px;
+}
+
+#visual2{
+position:absolute;
+top:31%;
+left:10px;}
+
+#visual3{
+position:absolute;
+top:54%;
+left:10px;
+}
+
+#visual4{
+position:absolute;
+top:77%;
+left:10px;
+}
+#tune_intro{
+position:absolute;
+color:#FFFFFF;
+font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+   font-weight: 300;
+
+}
+
+#visualizer_intro{
+color:#FFFFFF;
+font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida G\
+rande", sans-serif;
+   font-weight: 300;
+position:absolute;
+top:50%;
+left:20%;
+}
+
+#visualizer{
+position:absolute;
+
+}
+
+#about{
+position:absolute;
+top:95%;
+left:0%;
+}
+
+#textbox{
+position:absolute;
+top:85%;
+left:0%;
+padding:2px 6px 4px 6px; 
+color: #FFFFFF;
+font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida G\                                                                                                                                   
+rande", sans-serif;}
+
+
+
+</style>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
+
+
+
+</head>
+ 
+<body>
+
+<img src="../static/about.png" id="about" width = "53px" height = "21px">
+
+<script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+<script src="../static/three.min.js"></script>
+
+<center><img src="../static/logo.jpg" id="logo" ></center>
+
+<div id="tune_intro">
+<img src="../static/arrowright.png">
+Click there to select your music.
+</div>
+<div id="visualizer_intro">
+<img src="../static/arrowleft.png">
+And click there to select your visualizer.
+</div>
+
+
+
+
+
+<div  class='top-rectangle'>
+<img src = "../static/reggaerecruit.png" width = "80px" height = "80px" id = "reg1">
+<img src = "../static/regparty.jpg" width = "80px" height = "80px" id = "reg2">
+<img src = "../static/wormhole.jpg" width = "80px" height = "80px" id = "wormhole">
+<img src = "../static/river.jpg" width = "80px" height = "80px" id = "river">
+<img src = "../static/starstuff.jpg" width = "80px" height = "80px" id = "starstuff">
+<img src = "../static/cyprus.jpg" width = "80px" height = "80px" id = "cyprus">
+<img src = "../static/sands.jpg" width = "80px" height = "80px" id = "sands">
+<img src = "../static/dubstep.png" width = "80px" height = "80px" id = "dubstep">
+</div>
+
+<div class='left-rectangle'>
+<img src = "../static/REPLACEME.jpg" width = "80%" height = "15%" id = "visual1">
+<img src = "../static/REPLACEME.jpg" width = "80%" height = "15%" id = "visual2">
+<img src = "../static/REPLACEME.jpg" width = "80%x" height = "15%" id = "visual3">
+<img src = "../static/REPLACEME.jpg" width = "80%" height = "15%" id = "visual4">
+</div>
+
+
+<div id=pulldown >
+<center><img src = "../static/pulldown.jpg" height = "32px" width = "80px" ></center>
+</div>
+
+<div id=pullright >
+<img src = "../static/pullright.jpg" height = "80px" width = "32px" >
+</div>
+
+<span id="visualizer">
+<script> var scene = new THREE.Scene(); var camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);  var renderer = new THREE.WebGLRenderer(); renderer.setSize(window.innerWidth, window.innerHeight); document.body.appendChild(renderer.domElement);  var geometry = new THREE.CubeGeometry(1,1,1); var material = new THREE.MeshBasicMaterial({color: 0xFF00FF}); var cube = new THREE.Mesh(geometry, material); scene.add(cube);  camera.position.z = 5;  function render() { requestAnimationFrame(render);  cube.rotation.x += 0.1; cube.rotation.y += 0.1;  renderer.render(scene, camera); } render(); </script>
+</span>
+<div id="music">
+
+</div>
+
+<div id = "textbox">
+Pineapple was created by Daryl Sew, Peter Jasko, Eric Cerny, and Hon Wei Khor. <br>
+Visualizers are done using three.js.<br>
+Source code is available at <a href=" http://github.com/stuycs-ml7-projects/visualizer">http://github.com/stuycs-ml7-projects/visualizer</a>.<br>
+Click this text to close this about pullout.
+ </div>
+
+<script src="../static/pageActions.js"></script>
+</body>
+</html>
