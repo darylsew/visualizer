@@ -40,18 +40,62 @@ def index():
 
 @app.route("/v1", methods=['GET', 'POST'])
 def vis1():
+    if request.method == "POST":
+        #If someone pressed the top visualizer
+        if str(request.form['vis']) == "1":
+            #Redirect to Visualizer 1
+            return redirect("/v1")
+        elif str(request.form['vis']) == "2":
+            return redirect("/v2")
+        elif str(request.form['vis']) == "3":
+            return redirect("/v3")
+        elif str(request.form['vis']) == "4":
+            return redirect("/v4")
     return render_template("vis1.html")
 
 @app.route("/v2", methods=['GET', 'POST'])
 def vis2():
-     return render_template("vis2.html")
+    if request.method == "POST":
+        #If someone pressed the top visualizer
+        if str(request.form['vis']) == "1":
+            #Redirect to Visualizer 1
+            return redirect("/v1")
+        elif str(request.form['vis']) == "2":
+            return redirect("/v2")
+        elif str(request.form['vis']) == "3":
+            return redirect("/v3")
+        elif str(request.form['vis']) == "4":
+            return redirect("/v4")
+    return render_template("vis2.html")
 
 @app.route("/v3", methods=['GET', 'POST'])
 def vis3():
+    if request.method == "POST":
+        #If someone pressed the top visualizer
+        if str(request.form['vis']) == "1":
+            #Redirect to Visualizer 1
+            return redirect("/v1")
+        elif str(request.form['vis']) == "2":
+            return redirect("/v2")
+        elif str(request.form['vis']) == "3":
+            return redirect("/v3")
+        elif str(request.form['vis']) == "4":
+            return redirect("/v4")
     return render_template("vis3.html")
 
 @app.route("/v4", methods=['GET', 'POST'])
 def vis4():
+    if request.method == "POST":
+        #If someone pressed the top visualizer
+        if str(request.form['vis']) == "1":
+            #Redirect to Visualizer 1
+            return redirect("/v1")
+        elif str(request.form['vis']) == "2":
+            return redirect("/v2")
+        elif str(request.form['vis']) == "3":
+            return redirect("/v3")
+        elif str(request.form['vis']) == "4":
+            return redirect("/v4")
     return render_template("vis4.html")
 
 #if we use fileIO preprocessing
