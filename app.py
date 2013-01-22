@@ -7,7 +7,7 @@ app=Flask(__name__)
 @app.route("/")
 def index():
     centroids, frequencies, volumes = svt.processWav("wubwub.wav", 1)
-    return render_template("index.html",
+    return render_template("testing.html",
                             centroids=centroids,
                             frequencies=frequencies,
                             volumes=volumes)
