@@ -24,17 +24,23 @@ var cubes = new Array(15);
 for (var i = 0; i<15 ; i++) {
     cubes[i] = new Array(10);
 }
+
+var materials = new Array(150);
+for (var i = 0; i<150; i++) {
+    materials[i] = new THREE.MeshPhongMaterial({ color:0xf0f0f0 });
+}
 var cubeGeometry = new THREE.CubeGeometry(0.5,0.5,0.5);
-var cubeMaterial = new THREE.MeshPhongMaterial({ color:0xf0f0f0 });
-x = -7;
+
+x = -7; mat = 0;
 for (var i = 0; i<15; i++) {
     y = -4;
     for (var j = 0; j<10; j++) {
-	cubes[i][j] = new THREE.Mesh(cubeGeometry, cubeMaterial);
+	cubes[i][j] = new THREE.Mesh(cubeGeometry, materials[mat]);
 	scene.add(cubes[i][j]);
 	cubes[i][j].position.x=x;
 	cubes[i][j].position.y=y;
 	y++;
+	mat++;
     }
     x++;
 }
@@ -52,7 +58,7 @@ for (var i = 1; i<fake_centroids.length; i++) { // convert to 60fps
     fake_centroids[i] = centroids[i-i%2];
 }
 
-var frequencies = new Array(1350); //real frequencies go here
+var frequencies = new Array(2700); //real frequencies go here
 for (var i = 0; i<frequencies.length; i++) {
     frequencies[i] = Math.abs(Math.cos(i/100));
 }
@@ -69,18 +75,41 @@ for (var i = 0; i<vols.length; i++) {
 var fake_vols = new Array(vols.length * 2);
 for (var i = 0; i<fake_vols.length; i++) {
     fake_vols[i] = vols[i-i%2];
-    fake_vols[i] = Math.floor(fake_vols[i] * 10);
+    fake_vols[i] = Math.floor(fake_vols[i] * 9);
 }
 
-var id0 = cubes[0][0].id;
-console.log($("#50"));
 function light_column(freq, vol) {
     for (var i = 0; i<=vol; i++) {
-	if (i >= 8) {
+	if (i >= 7) {
 	    cubes[freq][i].material.color.setHex(0xff0000);
 	}
 	else{
 	    cubes[freq][i].material.color.setHex(0x0000ff);
+	}
+    }
+    setTimeout(function() {
+	    for (var i = 0; i <= 9; i++) {
+		cubes[freq][i].material.color.setHex(0xf0f0f0);
+	    }
+	}, 400);
+}
+
+function light_region(freq, vol) {
+    light_column(freq, vol);
+    if (vol >= 3) {
+	if (freq != 0) {
+	    light_column(freq-1, vol-2);
+	}
+	if (freq != 14) {
+	    light_column(freq+1, vol-2);
+	}
+    }
+    if (vol >= 5) {
+	if (freq != 0) {
+	    light_column(freq-1, vol-4);
+	}
+	if (freq != 14) {
+	    light_column(freq+1, vol-4);
 	}
     }
 }
@@ -89,13 +118,11 @@ var index = 0;
 function render() {
     requestAnimationFrame(render);
     renderer.render(scene,camera);
-    //    camera.position.x = 8*Math.cos(index/50);
-    //    camera.position.y = 8*Math.sin(index/50);
-    //    camera.position.z -= 0.03;
-    //    camera.position.x -= 0.01;
-    spotlight.position.z = 80 + 20*fake_centroids[index];
+    //    camera.position.x = 3*Math.cos(index/200);
+    //    camera.position.y = 3*Math.sin(index/200);
+    spotlight.position.z = 60 + 30*fake_centroids[index];
     camera.lookAt(new THREE.Vector3(-2,0,0));
-    //    light_column(2,4);
+    light_region(fake_frequencies[index],fake_vols[index]);
     index++;
 }
 
