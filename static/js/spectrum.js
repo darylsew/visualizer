@@ -118,10 +118,10 @@ var index = 0;
 function render() {
     requestAnimationFrame(render);
     renderer.render(scene,camera);
-    //    camera.position.x = 3*Math.cos(index/200);
-    //    camera.position.y = 3*Math.sin(index/200);
+    camera.position.x = 3*Math.cos(index/200);
+    camera.position.y = 3*Math.sin(index/200);
     spotlight.position.z = 60 + 30*fake_centroids[index];
-    camera.lookAt(new THREE.Vector3(-2,0,0));
+    camera.lookAt(new THREE.Vector3(0 ,0,0));
     light_region(fake_frequencies[index],fake_vols[index]);
     index++;
 }
