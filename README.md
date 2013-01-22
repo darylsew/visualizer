@@ -31,6 +31,14 @@ Current Features
 Create waveform and spectrogram images from a wav file using Short Time Fourier Transforms (provided by numpy). To test it, type 'python svt.py -o 1 filename' and look at the pngs generated. Credit to the [Sound Viewer Tool] (https://github.com/ljvillanueva/Sound-Viewer-Tool).  
 Compute spectral centroid (brightness/timbre/color of the sound), volume, and frequency data at any point in time in a wav file; uses svt.processWav(filename, channel). Filename is the path to a wav file, channel is 1 for the left channel and 2 for the right channel. Returns centroids[], frequencies[][], volumes[].
 
+Features to Implement Later
+---------------------------
+*   pause song
+*   change visualizer mid-song
+*   allow user to upload their own song
+*   integration with soundcloud api
+
+
 Deadlines
 ---------
 1/9: Have a visualizer that can do something up on github.  
