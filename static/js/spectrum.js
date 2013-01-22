@@ -105,11 +105,11 @@ function light_region(freq, vol) {
 	}
     }
     if (vol >= 5) {
-	if (freq != 0) {
-	    light_column(freq-1, vol-4);
+	if (freq > 1) {
+	    light_column(freq-2, vol-4);
 	}
-	if (freq != 14) {
-	    light_column(freq+1, vol-4);
+	if (freq < 13) {
+	    light_column(freq+2, vol-4);
 	}
     }
 }
@@ -120,9 +120,11 @@ function render() {
     renderer.render(scene,camera);
     camera.position.x = 3*Math.cos(index/200);
     camera.position.y = 3*Math.sin(index/200);
-    spotlight.position.z = 60 + 30*fake_centroids[index];
-    camera.lookAt(new THREE.Vector3(0 ,0,0));
-    light_region(fake_frequencies[index],fake_vols[index]);
+    if (index < 10800) {
+	spotlight.position.z = 60 + 30*fake_centroids[index];
+	camera.lookAt(new THREE.Vector3(0 ,0,0));
+	light_region(fake_frequencies[index],fake_vols[index]);
+    }
     index++;
 }
 
