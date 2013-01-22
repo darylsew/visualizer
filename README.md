@@ -42,7 +42,7 @@ Features to Implement Later
 Deadlines
 ---------
 1/9: Have a visualizer that can do something up on github.  
-1/12: Have a visualizer that is presentable (i.e. someone that looks at it will go wow, you wrote that?); import svt and use centroids, frequencies, volumes = svt.wavProcess(filename, 1) to retrieve wav data. 
+1/12: Have a visualizer that is presentable (i.e. someone that looks at it will go wow, you wrote that?); import svt and use centroids, frequencies, volumes = svt.wavProcess(filename, 1) to retrieve wav data.   
 1/14: Most changes to visualizers should be done by now; UI is done and sample songs have been chosen; an option for the user to upload a song from his/her own computer is provided; development now focuses on interactivity with the user and API. At this point, besides the README, ABSOLUTELY NOTHING should be pushed directly to master; all work done must be done in a branch and submitted with a pull request.  
 1/15: Continue adding API, interactivity, and/or other features. Eric, email zamansky asking him to set up all the dependencies (refer him to our README).  
 1/16: API should be complete and tested with other projects.  
