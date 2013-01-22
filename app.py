@@ -23,11 +23,24 @@ app=Flask(__name__)
 @app.route("/")
 def index():
     #centroids, frequencies, volumes = preProcess()
+    return render_template("index.html");
 
-    return render_template("testing.html",
-                            centroids=centroids,
-                            frequencies=frequencies,
-                            volumes=volumes)
+
+
+@app.route("/v1")
+def vis1():
+    return render_template("vis1.html");
+
+@app.route("/v2")
+def vis2():
+     return render_template("vis2.html");
+@app.route("/v3")
+def vis3():
+    return render_template("vis3.html");
+@app.route("/v4")
+def vis4():
+    return render_template("vis4.html");
+
 #if we use fileIO preprocessing
 def preProcess():
     pass
