@@ -11,7 +11,7 @@ app=Flask(__name__)
 def index():
     #centroids, frequencies, volumes = preProcess()
     #print "after the routine"
-    return render_template("testing.html",
+    return render_template("testing4.html",
                             centroids=centroids,
                             frequencies=frequencies,
                             volumes=volumes)
