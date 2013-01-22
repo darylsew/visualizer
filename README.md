@@ -59,16 +59,22 @@ Visualizers
 
 Sample Data
 -----------
-###Frequencies 
-####![Graph generating code (for clarity)](http://i1322.photobucket.com/albums/u568/Daryl_LikeaBoshkosh/01bec08cb0a6d05f104275d7e1b4a851_zps121bea6a.png)    
+###Frequencies
+####Graph generating code (for clarity)  
+![Graph generating code (for clarity)](http://i1322.photobucket.com/albums/u568/Daryl_LikeaBoshkosh/01bec08cb0a6d05f104275d7e1b4a851_zps121bea6a.png)  
 x axis is frequency, y axis is intensity, frame x == time; note that these are just 3 frames out of several thousand  
+Frame 0  
 ![Frame 0](http://i1322.photobucket.com/albums/u568/Daryl_LikeaBoshkosh/0939260e5185fb361a324deb425a7b62_zpsb0621069.png)  
+Frame 1  
 ![Frame 1](http://i1322.photobucket.com/albums/u568/Daryl_LikeaBoshkosh/32d96c138542e44a16131e0c8f1a5da1_zps1df88541.png)  
+Frame 2  
 ![Frame 2](http://i1322.photobucket.com/albums/u568/Daryl_LikeaBoshkosh/44afd3166c1bf769f0265b182daefa89_zpsebc6790d.png) 
 
-###![Centroids](http://i1322.photobucket.com/albums/u568/Daryl_LikeaBoshkosh/Centroids_zpsca41372a.png)  
+###Centroids  
+![Centroids](http://i1322.photobucket.com/albums/u568/Daryl_LikeaBoshkosh/Centroids_zpsca41372a.png)  
 x axis is time, y axis is brightness (low to high)
-###![Volumes](http://i1322.photobucket.com/albums/u568/Daryl_LikeaBoshkosh/Volumes_zps2785411e.png)  
+###Volumes  
+![Volumes](http://i1322.photobucket.com/albums/u568/Daryl_LikeaBoshkosh/Volumes_zps2785411e.png)  
 x axis is time, y axis is intensity (low to high)
 
 ###Summary Statistics (calculated from wubwub.wav)
