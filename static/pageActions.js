@@ -41,15 +41,6 @@ $(".top-rectangle").mouseenter(function(){
 
 //Sets variables to be associated with files
 var audio = new Audio();
-var reg1Audio = new Audio("../static/reg1.mp3");
-var reg2Audio = new Audio("../static/reg2.mp3");
-var starstuffAudio = new Audio("../static/starstuff.mp3");
-var superpositionAudio = new Audio("../static/superposition.mp3");
-var cyprusAudio = new Audio("../static/cyprus.mp3");
-var sandsAudio = new Audio("../static/sands.mp3");
-var dubstepAudio = new Audio("../static/dubstep.mp3");
-var riverAudio = new Audio("../static/river.mp3");
-
 
 function play(){
     audio.play();  }
@@ -61,56 +52,56 @@ function pause(){
 //handles playing the music
 $("#reg1").click(function(){
 	pause();
-	audio = reg1Audio;
+	audio =  new Audio("../static/reg1.mp3");
 	audio.load();
 	play();
     });
 
 $("#reg2").click(function(){
 	pause();
-        audio = reg2Audio;
+        audio = new Audio("../static/reg2.mp3");
 	audio.load();
 	play();
     });
 
 $("#wormhole").click(function(){
 	pause();
-        audio = superpositionAudio;
+        audio =  new Audio("../static/superposition.mp3");
 	audio.load();
 	play();
     });
 
 $("#river").click(function(){
 	pause();
-        audio = riverAudio;
+        audio = new Audio("../static/river.mp3");
 	audio.load();
 	play();
     });
 
 $("#starstuff").click(function(){
 	pause();
-        audio = starstuffAudio;
+        audio = new Audio("../static/starstuff.mp3");
 	audio.load();
 	play();
     });
 
 $("#cyprus").click(function(){
 	pause();
-        audio = cyprusAudio;
+        audio  = new Audio("../static/cyprus.mp3");
 	audio.load();
 	play();
     });
 
 $("#sands").click(function(){
 	pause();
-        audio = sandsAudio;
+        audio  = new Audio("../static/sands.mp3");
 	audio.load();
 	play();
     });
 
 $("#dubstep").click(function(){
 	pause();
-        audio = dubstepAudio;
+        audio  = new Audio("../static/dubstep.mp3");
 	audio.load();
 	play();
     });
