@@ -595,7 +595,7 @@ def processWav(filename, channel):
     #some rule says this frequency has to be half of the sample rate
     nyquist_freq = (audio_file.get_samplerate() / 2) + 0.0
     #fft_size stays 4096
-    processor = AudioProcessor(audio_file, 512, channel, numpy.hanning)
+    processor = AudioProcessor(audio_file, 2048, channel, numpy.hanning)
     
     centroids = []
     frequencies = []
