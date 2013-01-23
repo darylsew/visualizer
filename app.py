@@ -70,9 +70,9 @@ def vis2():
         elif str(request.form['vis']) == "4":
             return redirect("/v4")
     return render_template("vis2.html",
-                           centroids = centroids,
-                           frequencies = frequencies,
-                           volumes = volumes)
+                           centroids = rivercentroids,
+                           frequencies = riverfrequencies,
+                           volumes = rivervolumes)
 
 
 @app.route("/v3", methods=['GET', 'POST'])
@@ -89,9 +89,9 @@ def vis3():
         elif str(request.form['vis']) == "4":
             return redirect("/v4")
     return render_template("vis3.html",
-                           centroids = centroids,
-                           frequencies = frequencies,
-                           volumes = volumes)
+                           centroids = rivercentroids,
+                           frequencies = riverfrequencies,
+                           volumes = rivervolumes)
 
 
 @app.route("/v4", methods=['GET', 'POST'])
@@ -108,9 +108,9 @@ def vis4():
         elif str(request.form['vis']) == "4":
             return redirect("/v4")
     return render_template("vis4.html",
-                           centroids = centroids,
-                           frequencies = frequencies,
-                           volumes = volumes)
+                           centroids = rivercentroids,
+                           frequencies = riverfrequencies,
+                           volumes = rivervolumes)
 
 
 #if we use fileIO preprocessing
