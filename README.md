@@ -1,5 +1,5 @@
 
-![Pineapple Music Visualizer](/static/logo.jpg)
+![Pineapple Music Visualizer](http://i1322.photobucket.com/albums/u568/Daryl_LikeaBoshkosh/pineapple_zpscf7bb8db.jpg)
 ### Group members:
 pd6: Eric Cerny, Hon Wei Khor  
 pd7: Daryl Sew, Peter Jasko
