@@ -1,9 +1,9 @@
 
  //Timesout the logo and create the first introduction arrow.
 setTimeout(function(){$("#logo").fadeOut()
-	    $("#tune_intro").fadeIn("slow");},2000);
+	    $("#visualizer_intro").fadeIn("slow");},2000);
 //Hides the tune arrow before it is shown.
-$("#tune_intro").hide();
+$("#visualizer_intro").hide();
 
 //Hides and shows the left and top bars
 
@@ -30,7 +30,7 @@ function showLeft(){
 //Hides all the bars by default as you first load the page.
 $(".left-rectangle").hide();
 $(".top-rectangle").hide();
-$("#visualizer_intro").hide();
+$("#tune_intro").hide();
 $("#textbox").hide();
 //Hides the top and left bars once your mouse leaves their area.
 $(".top-rectangle").mouseenter(function(){
@@ -55,6 +55,7 @@ $("#reg1").click(function(){
 	audio =  new Audio("../static/reg1.mp3");
 	audio.load();
 	play();
+    doAnimate();
     });
 
 $("#reg2").click(function(){
@@ -62,6 +63,7 @@ $("#reg2").click(function(){
         audio = new Audio("../static/reg2.mp3");
 	audio.load();
 	play();
+    doAnimate();
     });
 
 $("#wormhole").click(function(){
@@ -69,6 +71,7 @@ $("#wormhole").click(function(){
         audio =  new Audio("../static/superposition.mp3");
 	audio.load();
 	play();
+    doAnimate();
     });
 
 $("#river").click(function(){
@@ -76,6 +79,7 @@ $("#river").click(function(){
         audio = new Audio("../static/river.mp3");
 	audio.load();
 	play();
+    doAnimate();
     });
 
 $("#starstuff").click(function(){
@@ -83,6 +87,7 @@ $("#starstuff").click(function(){
         audio = new Audio("../static/starstuff.mp3");
 	audio.load();
 	play();
+    doAnimate();
     });
 
 $("#cyprus").click(function(){
@@ -90,6 +95,7 @@ $("#cyprus").click(function(){
         audio  = new Audio("../static/cyprus.mp3");
 	audio.load();
 	play();
+    doAnimate();
     });
 
 $("#sands").click(function(){
@@ -97,6 +103,7 @@ $("#sands").click(function(){
         audio  = new Audio("../static/sands.mp3");
 	audio.load();
 	play();
+    doAnimate();
     });
 
 $("#dubstep").click(function(){
@@ -104,6 +111,7 @@ $("#dubstep").click(function(){
         audio  = new Audio("../static/dubstep.mp3");
 	audio.load();
 	play();
+    doAnimate();
     });
 
 $(".left-rectangle").mouseenter(function(){
@@ -116,9 +124,9 @@ var introNotDone = true;
 
 $("#pulldown").click(function() {
 	showTop();
-	$("#tune_intro").fadeOut();
+	$("#visualizer_intro").fadeOut();
 	if(introNotDone){
-	    $("#visualizer_intro").fadeIn("slow");
+	    $("#tune_intro").fadeIn("slow");
 	    introNotDone = false;}});
 
 $("#pullright").click(function() {

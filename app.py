@@ -9,7 +9,7 @@ global centroids, frequencies, volumes,reg1centroids, reg1frequencies, reg1volum
 #reg2centroids, reg2frequencies, reg2volumes = svt.processWav("./static/reg2.wav", 1)
 #cypruscentroids, cyprusfrequencies,cyprusvolumes = svt.processWav("./static/cyprus.wav", 1)
 #dubcentroids, dubfrequencies,dubvolumes = svt.processWav("./static/dubstep.wav", 1)
-#rivercentroids, riverfrequencies,rivervolumes = svt.processWav("./static/river.wav", 1)
+rivercentroids, riverfrequencies,rivervolumes = svt.processWav("./static/river.wav", 1)
 #sandscentroids, sandsfrequencies, sandsvolumes = svt.processWav("./static/sands.wav", 1)
 #starcentroids, starfrequencies, starvolumes = svt.processWav("./static/starstuff.wav", 1)
 #supercentroids, superfrequencies, supervolumes = svt.processWav("./static/superposition.wav", 1)
@@ -51,7 +51,10 @@ def vis1():
             return redirect("/v3")
         elif str(request.form['vis']) == "4":
             return redirect("/v4")
-    return render_template("vis1.html")
+    return render_template("vis1.html",
+                           centroids = rivercentroids,
+                           frequencies = riverfrequencies,
+                           volumes = rivervolumes)
 
 @app.route("/v2", methods=['GET', 'POST'])
 def vis2():
@@ -66,7 +69,11 @@ def vis2():
             return redirect("/v3")
         elif str(request.form['vis']) == "4":
             return redirect("/v4")
-    return render_template("vis2.html")
+    return render_template("vis2.html",
+                           centroids = rivercentroids,
+                           frequencies = riverfrequencies,
+                           volumes = rivervolumes)
+
 
 @app.route("/v3", methods=['GET', 'POST'])
 def vis3():
@@ -81,7 +88,11 @@ def vis3():
             return redirect("/v3")
         elif str(request.form['vis']) == "4":
             return redirect("/v4")
-    return render_template("vis3.html")
+    return render_template("vis3.html",
+                           centroids = rivercentroids,
+                           frequencies = riverfrequencies,
+                           volumes = rivervolumes)
+
 
 @app.route("/v4", methods=['GET', 'POST'])
 def vis4():
@@ -96,7 +107,11 @@ def vis4():
             return redirect("/v3")
         elif str(request.form['vis']) == "4":
             return redirect("/v4")
-    return render_template("vis4.html")
+    return render_template("vis4.html",
+                           centroids = rivercentroids,
+                           frequencies = riverfrequencies,
+                           volumes = rivervolumes)
+
 
 #if we use fileIO preprocessing
 def preProcess():
@@ -104,4 +119,4 @@ def preProcess():
 
 if __name__=="__main__":
     app.debug=True
-    app.run()
+    app.run(host="0.0.0.0", port=5000)

@@ -581,6 +581,7 @@ def processWav(filename, channel):
     #open file
     audio_file = audiolab.sndfile(filename, 'read')
     #should be length of audiofile in seconds * 60. will fix this later
+    """
     import contextlib
     import wave
     with contextlib.closing(wave.open(filename, 'r')) as f:
@@ -589,6 +590,9 @@ def processWav(filename, channel):
         duration = frames / float(rate)
     duration *= 30 #30 data points for every second of audio yay
     duration = int(duration) #can only return an integer number of frames so yeah
+    """
+    #temporary measure due to wave dependency absence
+    duration = 6089
     #print duration
     #Not really samples per pixel but I'll let that slide
     samples_per_pixel = audio_file.get_nframes() / float(duration)
@@ -623,6 +627,7 @@ def processWav(filename, channel):
             frequencies[i][j] = round(frequencies[i][j], 4)
     return centroids, frequencies, volumes
 
+"""
  
 if __name__ == '__main__':
     #note: optparse is deprecated
@@ -666,4 +671,6 @@ if __name__ == '__main__':
 	    create_png(*args)
     else:
         print "\n svt version 0.4"
-
+"""
+#temporary measure
+#processWav("static/river.wav", 1)
