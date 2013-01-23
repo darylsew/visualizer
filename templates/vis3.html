@@ -251,24 +251,29 @@ rande", sans-serif;}
 
   function init() {
     /* Camera */
-    scene_WID = window.innerWidth;
+    scene_WID = window.innerWidth; //dimensions of the scene
     scene_HT = window.innerHeight;
     camera = new THREE.PerspectiveCamera(75, scene_WID/scene_HT, 0.1, 1000);
+               // parameters taken from THREE.js tutorial
+               // 75 = view angle, width/height = aspect ratio
+               // 0.1 and 1000 are bounds within which to render something
     camera.position.z = 1.5;
 
     /* Cube */
     geometry = new THREE.CubeGeometry(1,1,1);
     material = new THREE.MeshLambertMaterial({ color: 0xff0000} );
-    cube = new THREE.Mesh(geometry, material);
+    cube = new THREE.Mesh(geometry, material); // default position is (0,0,0)
 
     /* Plane */
     planeGeometry = new THREE.PlaneGeometry(250,250,5,5);
+                  // size 250 by 250 with 5 vertical and 5 horizontal grid lines
     planeMaterial = new THREE.MeshPhongMaterial({ color: 0xf0f0f0 });
+                  // Lambert for cube and Phong for plane was arbitrary
     plane = new THREE.Mesh(planeGeometry, planeMaterial);
-    plane.position.z = -21;
+    plane.position.z = -21; // it's the background
 
     /* Light */
-    light = new THREE.PointLight(0xFFFFFF);
+    light = new THREE.PointLight(0xFFFFFF); // creates light in all directions
 
     /* Additions */
     scene = new THREE.Scene();
@@ -283,7 +288,8 @@ rande", sans-serif;}
 
   function curate() {
     /* curated_centroids will be full of values that
-       are meaningful to the color of the cube. */
+       are meaningful to the color of the cube.
+       They range from 0x000000 to 0xffffff (hexidecimal color codes) */
     centroids = {{centroids}};
     curated_centroids = new Array(centroids.length * 2);
     for (var i = 0; i<centroids.length; i++) {
@@ -293,13 +299,13 @@ rande", sans-serif;}
       curated_centroids[i] = curated_centroids[i-i%2] * 0xffffff;
     }
 
-    /* curated_volumes will fall in the range [-0.5,0.5] and later
+    /* curated_volumes will fall in the range [-0.25,0.25] and later
        affect camera position and therefore apparent cube size. */
     volumes = {{volumes}};
     curated_volumes = new Array(volumes.length * 2);
     for (var i = 0; i<volumes.length; i++) {
         curated_volumes[2 * i] = volumes[i] * 0.5 - 0.25;
-				      //shift to and scale to -.25 ~ .25
+		              // shift to and scale to -.25 ~ .25
     }
     for (var i = 0; i<curated_volumes.length; i++) {
         curated_volumes[i] = curated_volumes[i-i%2];
@@ -308,14 +314,14 @@ rande", sans-serif;}
 
   var index = 0;
   function render() {
-    requestAnimationFrame(render);
-    renderer.render(scene,camera);
+    requestAnimationFrame(render); // THREE.js convention
+    renderer.render(scene,camera); // THREE.js convention
     cube.material.color.setHex(curated_centroids[index]);
     camera.position.z = 1.5 - curated_volumes[index];
-                       //distance is inversely proportional to apparent size
-    index = (index + 1) % curated_centroids.length;
-    cube.rotation.x = Math.cos(index/50);
-    cube.rotation.y = Math.sin(index/50);
+                  // camera distance is inversely proportional to apparent size
+    index = (index + 1) % curated_centroids.length; // loop after song is done
+    cube.rotation.x = Math.cos(index/50); // rotate the cube in some way
+    cube.rotation.y = Math.sin(index/50); // that isn't too boring
   }
 
 

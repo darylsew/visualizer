@@ -360,7 +360,7 @@ function doAnimate(){
     function animate() {
 
         // note: three.js includes requestAnimationFrame shim
-        requestAnimationFrame( animate );
+        requestAnimationFrame( animate ); // THREE.js convention
 
 			  counter = (counter+1)%maxlen;
 			  alpha = (alpha + 15)%360;
@@ -370,7 +370,7 @@ function doAnimate(){
 			  orbsreposition();
 			  camreposition();
 			  lightrepos();
-        renderer.render( scene, camera );
+        renderer.render( scene, camera ); // THREE.js convention
     }}
 </script>
 </span>

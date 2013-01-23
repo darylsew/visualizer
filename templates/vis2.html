@@ -253,7 +253,7 @@ rande", sans-serif;}
         curate();
 
         function init() {
-            scene_WID = window.innerWidth;
+            scene_WID = window.innerWidth; //size of the scene
             scene_HT = window.innerHeight;
             /* Camera */
             camera = new THREE.PerspectiveCamera(75, scene_WID / scene_HT, 0.1, 1000);
@@ -262,7 +262,7 @@ rande", sans-serif;}
             planeGeometry = new THREE.PlaneGeometry(450, 450, 20, 20);
             planeMaterial = new THREE.MeshPhongMaterial({
                 color: 0x808080
-            });
+            }); //MeshPhongMaterial gets affected by lights
             plane = new THREE.Mesh(planeGeometry, planeMaterial);
 
             /* Cube Grid */
@@ -294,9 +294,9 @@ rande", sans-serif;}
             }
 
             /* Lights */
-            light = new THREE.PointLight(0xffffff);
-	    light_L = new THREE.PointLight(0x404040);
-
+            light = new THREE.PointLight(0xffffff);   // creates light in all
+	    light_L = new THREE.PointLight(0x404040); // directions; 404040 is
+				                      // a softer color
             /* Additions and positioning */
             scene = new THREE.Scene();
             scene.add(plane);
@@ -323,7 +323,7 @@ rande", sans-serif;}
             for (var i = 0; i < curated_centroids.length; i++) { // convert to 60fps
                 curated_centroids[i] = centroids[i - i % 2];
                 curated_centroids[i] = curated_centroids[i];
-            }
+            } // centroids are in the range 0~1 and get scaled up in render()
 /*
             frequencies = {{frequencies}};
             curated_frequencies = new Array(frequencies.length * 2);
@@ -349,14 +349,14 @@ rande", sans-serif;}
 	    for (var i = 0; i < curated_frequencies.length; i++) {
 	        curated_frequencies[i] = Math.floor(
                                          curated_frequencies[i] * (grid_WID - 1));
-            }
+            } // frequencies are in the range 0 ~ grid_WID-1
 
             volumes = {{volumes}};
             curated_volumes = new Array(volumes.length * 2);
             for (var i = 0; i < curated_volumes.length; i++) {
                 curated_volumes[i] = volumes[i - i % 2];
                 curated_volumes[i] = Math.floor(curated_volumes[i] * (grid_HT - 1));
-            }
+            } // volumes are in the range 0 ~ grid_HT-1
         }
 
 
@@ -366,13 +366,14 @@ rande", sans-serif;}
                     cubes[freq][i].material.color.setHex(0xff0000);
                 } else {
                     cubes[freq][i].material.color.setHex(0x0000ff);
-                }
-            }
+                } // color everything above a certain point red
+            }     // and everything below that blue
+		  // height of highest colored cube = volume (ie bottom cube, second, third cube, etc)
             setTimeout(function () {
                 for (var i = 0; i < grid_HT; i++) {
                     cubes[freq][i].material.color.setHex(0xc0c0c0);
                 }
-            }, 400);
+            }, 400); // un-color the column
         }
 
         function light_region(freq, vol) {
@@ -392,23 +393,23 @@ rande", sans-serif;}
                 if (freq < grid_WID - 2) {
                     light_column(freq + 2, vol - 4);
                 }
-            }
-        }
+            } // color in two columns to the left and two columns
+        }     // to the right of the main column
 
 
         var index = 0;
         function render() {
-            requestAnimationFrame(render); 
-            renderer.render(scene, camera);
-            camera.position.x = 4 * Math.cos(index/200);
-            camera.position.y = 2 * Math.sin(index/200);
+            requestAnimationFrame(render);  //THREE.js convention
+            renderer.render(scene, camera); //THREE.js convention
+            camera.position.x = 4 * Math.cos(index/200); // parametric eqns
+            camera.position.y = 2 * Math.sin(index/200); // of a circle
             light.position.z = 30 + 60 * curated_centroids[index];
-            camera.lookAt(new THREE.Vector3(0, 0, 0));
+            camera.lookAt(new THREE.Vector3(0, 0, 0)); // look at the origin
 	    try{
                 light_region(curated_frequencies[index],curated_volumes[index]);
 	    } catch(err) {
             }
-            index = (index + 1) % volumes.length;
+            index = (index + 1) % curated_volumes.length; // loop after song is done
 
         }
 
