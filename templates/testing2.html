@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <style>
     canvas {
@@ -28,15 +29,15 @@
             camera = new THREE.PerspectiveCamera(75, scene_WID / scene_HT, 0.1, 1000);
 
             /* Background */
-            planeGeometry = new THREE.PlaneGeometry(450, 450, 0, 0);
+            planeGeometry = new THREE.PlaneGeometry(450, 450, 20, 20);
             planeMaterial = new THREE.MeshPhongMaterial({
-                color: 0xa0a0a0
+                color: 0x808080
             });
             plane = new THREE.Mesh(planeGeometry, planeMaterial);
 
             /* Cube Grid */
-            grid_WID = 15; //CHANGE THESE TO EDIT SIZE OF GRID
-            grid_HT = 10;
+            grid_WID = 18; //CHANGE THESE TO EDIT SIZE OF GRID
+            grid_HT = 12;
             cubes = new Array(grid_WID);
             for (var i = 0; i < grid_WID; i++) {
                 cubes[i] = new Array(grid_HT);
@@ -63,24 +64,25 @@
             }
 
             /* Lights */
-            light = new THREE.SpotLight(0xffffff);
-	    light_L = new THREE.SpotLight(0x404040);
+            light = new THREE.PointLight(0xffffff);
+	    light_L = new THREE.PointLight(0x404040);
 
             /* Additions and positioning */
             scene = new THREE.Scene();
             scene.add(plane);
+            plane.position.z = -10;
             camera.position.z = grid_HT;
-            plane.position.z = -1;
             for (var i = 0; i < cubes.length; i++) {
                 for (var j = 0; j < cubes[i].length; j++) {
                     scene.add(cubes[i][j]);
                 }
             }
             scene.add(light);
+	    light.position.z = 10;
             scene.add(light_L);
             light_L.position.x = -25;
             light_L.position.z = 15;
-            renderer = new THREE.WebGLRenderer();
+            renderer = new THREE.CanvasRenderer();
             renderer.setSize(scene_WID, scene_HT);
             document.body.appendChild(renderer.domElement);
         }
@@ -118,7 +120,7 @@
 	        curated_frequencies[i] = Math.floor(
                                          curated_frequencies[i] * (grid_WID - 1));
             }
-console.log(curated_centroids);
+
             volumes = {{volumes}};
             curated_volumes = new Array(volumes.length * 2);
             for (var i = 0; i < curated_volumes.length; i++) {
@@ -129,7 +131,7 @@ console.log(curated_centroids);
 
 
         function light_column(freq, vol) {
-            for (var i = 0; i <= vol; i++) {
+            for (var i = 0; i < vol; i++) {
                 if (i >= 0.7 * grid_HT) {
                     cubes[freq][i].material.color.setHex(0xff0000);
                 } else {
@@ -165,17 +167,19 @@ console.log(curated_centroids);
 
 
         var index = 0;
-
         function render() {
             requestAnimationFrame(render); 
             renderer.render(scene, camera);
-            camera.position.x = 4 * Math.cos(index / 250);
-            camera.position.y = 2 * Math.sin(index / 250);
+            camera.position.x = 4 * Math.cos(index/200);
+            camera.position.y = 2 * Math.sin(index/200);
             light.position.z = 30 + 60 * curated_centroids[index];
             camera.lookAt(new THREE.Vector3(0, 0, 0));
-            light_region(curated_frequencies[index], curated_volumes[index]);
-
+	    try{
+                light_region(curated_frequencies[index],curated_volumes[index]);
+	    } catch(err) {
+            }
             index = (index + 1) % volumes.length;
+
         }
 
         render();
