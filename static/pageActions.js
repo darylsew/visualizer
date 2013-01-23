@@ -55,6 +55,7 @@ $("#reg1").click(function(){
 	audio =  new Audio("../static/reg1.mp3");
 	audio.load();
 	play();
+    doAnimate();
     });
 
 $("#reg2").click(function(){
@@ -62,6 +63,7 @@ $("#reg2").click(function(){
         audio = new Audio("../static/reg2.mp3");
 	audio.load();
 	play();
+    doAnimate();
     });
 
 $("#wormhole").click(function(){
@@ -69,6 +71,7 @@ $("#wormhole").click(function(){
         audio =  new Audio("../static/superposition.mp3");
 	audio.load();
 	play();
+    doAnimate();
     });
 
 $("#river").click(function(){
@@ -76,6 +79,7 @@ $("#river").click(function(){
         audio = new Audio("../static/river.mp3");
 	audio.load();
 	play();
+    doAnimate();
     });
 
 $("#starstuff").click(function(){
@@ -83,6 +87,7 @@ $("#starstuff").click(function(){
         audio = new Audio("../static/starstuff.mp3");
 	audio.load();
 	play();
+    doAnimate();
     });
 
 $("#cyprus").click(function(){
@@ -90,6 +95,7 @@ $("#cyprus").click(function(){
         audio  = new Audio("../static/cyprus.mp3");
 	audio.load();
 	play();
+    doAnimate();
     });
 
 $("#sands").click(function(){
@@ -97,6 +103,7 @@ $("#sands").click(function(){
         audio  = new Audio("../static/sands.mp3");
 	audio.load();
 	play();
+    doAnimate();
     });
 
 $("#dubstep").click(function(){
@@ -104,6 +111,7 @@ $("#dubstep").click(function(){
         audio  = new Audio("../static/dubstep.mp3");
 	audio.load();
 	play();
+    doAnimate();
     });
 
 $(".left-rectangle").mouseenter(function(){
