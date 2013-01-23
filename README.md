@@ -8,8 +8,8 @@ pd7: Daryl Sew, Peter Jasko
 How to use it:
 --------------
 
-Please see dependencies to install. Visit http://ml7.stuycs.org:9999 and begin by selecting a visualizer from the tab on the left. When the new page loads, select a tune from the tab above and watch the visualization of that tune.
-
+Visit http://ml7.stuycs.org:9999 and begin by selecting a visualizer from the tab on the left. When the new page loads, select a tune from the tab above and watch the visualization of that tune.  
+If you're cloning/forking the project, please see the dependencies below.
 
 What we wanted to do:
 -----------------------
