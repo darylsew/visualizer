@@ -1,6 +1,5 @@
-Visualizer
-==========
 
+![Pineapple Music Visualizer](/static/logo.jpg)
 ### Group members:
 pd6: Eric Cerny, Hon Wei Khor  
 pd7: Daryl Sew, Peter Jasko
