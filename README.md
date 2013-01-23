@@ -8,22 +8,24 @@ pd7: Daryl Sew, Peter Jasko
 How to use it:
 --------------
 
-Please see dependencies to install. Visit ml7.stuycs.org:9999 and begin by selecting a visualizer from the tab on the left. When the new page loads, select a tune from the tab above and watch the visualization of that tune.
+Please see dependencies to install. Visit http://ml7.stuycs.org:9999 and begin by selecting a visualizer from the tab on the left. When the new page loads, select a tune from the tab above and watch the visualization of that tune.
 
 
-What we're going to do:
+What we wanted to do:
 -----------------------
 
 Take a music file and visualize it, maybe let the user play around with some settings for the visualization. We'll decide on additional features later on in the project.
 
-How we're going to do it:
+How we did it:
 ------------------------
 
 Using scipy/numpy/assorted libraries for fourier transform analysis of wav files.
 
+But it kinda magically came together the morning it was due. Inexplicable, really.
+
 Resources/dependencies
 ----------------------
-Several royalty-free songs will be provided for demonstration purposes; the user will have the option to use files from his/her own music library.
+Several royalty-free songs will be provided for demonstration purposes.
 *   wave (sudo pip install wave) - this might have been already installed along with your Python distribution, though
 *   scipy/numpy (sudo apt-get install python-numpy python-scipy)
 *   audiolab  
@@ -36,7 +38,8 @@ NOTE: To enable WebGL rendering on Chrome, go to chrome://flags and enable 'Over
 Current Features
 ----------------
 Create waveform and spectrogram images from a wav file using Short Time Fourier Transforms (provided by numpy). To test it, type 'python svt.py -o 1 filename' and look at the pngs generated. Credit to the [Sound Viewer Tool] (https://github.com/ljvillanueva/Sound-Viewer-Tool).  
-Compute spectral centroid (brightness/timbre/color of the sound), volume, and frequency data at any point in time in a wav file; uses svt.processWav(filename, channel). Filename is the path to a wav file, channel is 1 for the left channel and 2 for the right channel. Returns centroids[], frequencies[][], volumes[].
+Compute spectral centroid (brightness/timbre/color of the sound), volume, and frequency data at any point in time in a wav file; uses svt.processWav(filename, channel). Filename is the path to a wav file, channel is 1 for the left channel and 2 for the right channel. Returns centroids[], frequencies[][], volumes[].  
+VISUALIZERS.
 
 Features to Implement Later
 ---------------------------
