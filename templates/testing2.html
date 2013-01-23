@@ -26,7 +26,6 @@
             scene_HT = window.innerHeight;
             /* Camera */
             camera = new THREE.PerspectiveCamera(75, scene_WID / scene_HT, 0.1, 1000);
-            camera.position.z = 9;
 
             /* Background */
             planeGeometry = new THREE.PlaneGeometry(450, 450, 0, 0);
@@ -37,8 +36,7 @@
 
             /* Cube Grid */
             grid_WID = 15; //CHANGE THESE TO EDIT SIZE OF GRID
-            grid_HT = 10; //may have to alter x and y below
-            //as well as camera.position.z
+            grid_HT = 10;
             cubes = new Array(grid_WID);
             for (var i = 0; i < grid_WID; i++) {
                 cubes[i] = new Array(grid_HT);
@@ -50,10 +48,10 @@
                 });
             }
             cubeGeometry = new THREE.CubeGeometry(0.5, 0.5, 0.5);
-            var x = -7;
+            var x = -1 * grid_WID / 2 - 1;
             var mat = 0;
             for (var i = 0; i < grid_WID; i++) {
-                var y = -4;
+                var y = -1 * grid_HT / 2;
                 for (var j = 0; j < grid_HT; j++) {
                     cubes[i][j] = new THREE.Mesh(cubeGeometry, materials[mat]);
                     cubes[i][j].position.x = x;
@@ -71,6 +69,7 @@
             /* Additions and positioning */
             scene = new THREE.Scene();
             scene.add(plane);
+            camera.position.z = grid_HT;
             plane.position.z = -1;
             for (var i = 0; i < cubes.length; i++) {
                 for (var j = 0; j < cubes[i].length; j++) {
