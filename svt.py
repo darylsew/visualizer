@@ -581,7 +581,7 @@ def processWav(filename, channel):
     #open file
     audio_file = audiolab.sndfile(filename, 'read')
     #should be length of audiofile in seconds * 60. will fix this later
-    """
+    
     import contextlib
     import wave
     with contextlib.closing(wave.open(filename, 'r')) as f:
@@ -590,15 +590,12 @@ def processWav(filename, channel):
         duration = frames / float(rate)
     duration *= 30 #30 data points for every second of audio yay
     duration = int(duration) #can only return an integer number of frames so yeah
-    """
-    #temporary measure due to wave dependency absence
-    duration = 6089
     #print duration
     #Not really samples per pixel but I'll let that slide
     samples_per_pixel = audio_file.get_nframes() / float(duration)
     #some rule says this frequency has to be half of the sample rate
     nyquist_freq = (audio_file.get_samplerate() / 2) + 0.0
-    #fft_size stays 4096
+    #fft_size stays 2048; smaller size == more efficient, fewer frequency samples
     processor = AudioProcessor(audio_file, 2048, channel, numpy.hanning)
     
     centroids = []

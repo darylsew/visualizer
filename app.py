@@ -4,12 +4,12 @@ import svt
 
 global centroids, frequencies, volumes,reg1centroids, reg1frequencies, reg1volumes, reg2centroids, reg2frequencies, reg2volumes, cypruscentroids, cyprusfrequencies,cyprusvolumes, dubcentroids, dubfrequencies,dubvolumes,rivercentroids, riverfrequencies,rivervolumes,sandscentroids, sandsfrequencies, sandsvolumes,starcentroids, starfrequencies, starvolumes,supercentroids, superfrequencies, supervolumes
 
-#centroids, frequencies, volumes = svt.processWav("wubwub.wav", 1)
+centroids, frequencies, volumes = svt.processWav("wubwub.wav", 1)
 #reg1centroids, reg1frequencies, reg1volumes = svt.processWav("./static/reg1.wav", 1)
 #reg2centroids, reg2frequencies, reg2volumes = svt.processWav("./static/reg2.wav", 1)
 #cypruscentroids, cyprusfrequencies,cyprusvolumes = svt.processWav("./static/cyprus.wav", 1)
 #dubcentroids, dubfrequencies,dubvolumes = svt.processWav("./static/dubstep.wav", 1)
-rivercentroids, riverfrequencies,rivervolumes = svt.processWav("./static/river.wav", 1)
+#rivercentroids, riverfrequencies,rivervolumes = svt.processWav("./static/river.wav", 1)
 #sandscentroids, sandsfrequencies, sandsvolumes = svt.processWav("./static/sands.wav", 1)
 #starcentroids, starfrequencies, starvolumes = svt.processWav("./static/starstuff.wav", 1)
 #supercentroids, superfrequencies, supervolumes = svt.processWav("./static/superposition.wav", 1)
@@ -52,9 +52,9 @@ def vis1():
         elif str(request.form['vis']) == "4":
             return redirect("/v4")
     return render_template("vis1.html",
-                           centroids = rivercentroids,
-                           frequencies = riverfrequencies,
-                           volumes = rivervolumes)
+                           centroids = centroids,
+                           frequencies = frequencies,
+                           volumes = volumes)
 
 @app.route("/v2", methods=['GET', 'POST'])
 def vis2():
@@ -70,9 +70,9 @@ def vis2():
         elif str(request.form['vis']) == "4":
             return redirect("/v4")
     return render_template("vis2.html",
-                           centroids = rivercentroids,
-                           frequencies = riverfrequencies,
-                           volumes = rivervolumes)
+                           centroids = centroids,
+                           frequencies = frequencies,
+                           volumes = volumes)
 
 
 @app.route("/v3", methods=['GET', 'POST'])
@@ -89,9 +89,9 @@ def vis3():
         elif str(request.form['vis']) == "4":
             return redirect("/v4")
     return render_template("vis3.html",
-                           centroids = rivercentroids,
-                           frequencies = riverfrequencies,
-                           volumes = rivervolumes)
+                           centroids = centroids,
+                           frequencies = frequencies,
+                           volumes = volumes)
 
 
 @app.route("/v4", methods=['GET', 'POST'])
@@ -108,9 +108,9 @@ def vis4():
         elif str(request.form['vis']) == "4":
             return redirect("/v4")
     return render_template("vis4.html",
-                           centroids = rivercentroids,
-                           frequencies = riverfrequencies,
-                           volumes = rivervolumes)
+                           centroids = centroids,
+                           frequencies = frequencies,
+                           volumes = volumes)
 
 
 #if we use fileIO preprocessing
