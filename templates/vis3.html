@@ -264,21 +264,12 @@ rande", sans-serif;}
     material = new THREE.MeshLambertMaterial({ color: 0xff0000} );
     cube = new THREE.Mesh(geometry, material); // default position is (0,0,0)
 
-    /* Plane */
-    planeGeometry = new THREE.PlaneGeometry(250,250,5,5);
-                  // size 250 by 250 with 5 vertical and 5 horizontal grid lines
-    planeMaterial = new THREE.MeshPhongMaterial({ color: 0xf0f0f0 });
-                  // Lambert for cube and Phong for plane was arbitrary
-    plane = new THREE.Mesh(planeGeometry, planeMaterial);
-    plane.position.z = -21; // it's the background
-
     /* Light */
     light = new THREE.PointLight(0xFFFFFF); // creates light in all directions
 
     /* Additions */
     scene = new THREE.Scene();
     scene.add(cube);
-    scene.add(plane);
     scene.add(light);
     light.position.z = 1.5;
     renderer = new THREE.CanvasRenderer();
