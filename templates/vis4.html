@@ -1,7 +1,19 @@
 <html>
 <head>
+    {{song}}
+<script type="text/javascript">
 
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-38011126-1']);
+  _gaq.push(['_trackPageview']);
 
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
 <style type ="text/css">
 
   html {
@@ -196,15 +208,12 @@ rande", sans-serif;}
 <script src="../static/three.min.js"></script>
 
 <center><img src="../static/logo.jpg" id="logo" ></center>
-
+<!--
 <div id="tune_intro">
-<img src="../static/arrowright.png">
-Click there to select your music.
+    <img src = "../static/arrowright.png">
+    And click here to select your music.
 </div>
-<div id="visualizer_intro">
-<img src="../static/arrowleft.png">
-And click there to select your visualizer.
-</div>
+-->
 
 
 
@@ -226,9 +235,9 @@ And click there to select your visualizer.
 
 <div class='left-rectangle'>
     <form action = "" method = "POST">
-        <input type ="image" src = "../static/REPLACEME.jpg" width = "80%" height = "15%" name = "vis" value="1" id = "visual1">
-        <input type ="image" src = "../static/REPLACEME.jpg" width = "80%" height = "15%" name = "vis" value="2" id = "visual2">
-        <input type ="image" src = "../static/REPLACEME.jpg" width = "80%" height = "15%" name = "vis" value="3" id = "visual3">
+        <input type ="image" src = "../static/visu1.png" width = "80%" height = "15%" name = "vis" value="1" id = "visual1">
+        <input type ="image" src = "../static/visu2.png" width = "80%" height = "15%" name = "vis" value="2" id = "visual2">
+        <input type ="image" src = "../static/visu3.png" width = "80%" height = "15%" name = "vis" value="3" id = "visual3">
         <input type ="image" src = "../static/REPLACEME.jpg" width = "80%" height = "15%" name = "vis" value="4" id = "visual4">
     </form>
 </div>

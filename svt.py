@@ -581,6 +581,7 @@ def processWav(filename, channel):
     #open file
     audio_file = audiolab.sndfile(filename, 'read')
     #should be length of audiofile in seconds * 60. will fix this later
+    
     import contextlib
     import wave
     with contextlib.closing(wave.open(filename, 'r')) as f:
@@ -594,7 +595,7 @@ def processWav(filename, channel):
     samples_per_pixel = audio_file.get_nframes() / float(duration)
     #some rule says this frequency has to be half of the sample rate
     nyquist_freq = (audio_file.get_samplerate() / 2) + 0.0
-    #fft_size stays 4096
+    #fft_size stays 2048; smaller size == more efficient, fewer frequency samples
     processor = AudioProcessor(audio_file, 2048, channel, numpy.hanning)
     
     centroids = []
@@ -623,6 +624,7 @@ def processWav(filename, channel):
             frequencies[i][j] = round(frequencies[i][j], 4)
     return centroids, frequencies, volumes
 
+"""
  
 if __name__ == '__main__':
     #note: optparse is deprecated
@@ -666,4 +668,6 @@ if __name__ == '__main__':
 	    create_png(*args)
     else:
         print "\n svt version 0.4"
-
+"""
+#temporary measure
+#processWav("static/river.wav", 1)

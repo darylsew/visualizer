@@ -1,6 +1,19 @@
 <html>
-<head>
+    <head>
+{{song}}
+<script type="text/javascript">
 
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-38011126-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+</script>
 
 <style type ="text/css">
 
@@ -196,15 +209,12 @@ rande", sans-serif;}
 <script src="../static/three.min.js"></script>
 
 <center><img src="../static/logo.jpg" id="logo" ></center>
-
+<!--
 <div id="tune_intro">
-<img src="../static/arrowright.png">
-Click there to select your music.
+    <img src = "../static/arrowright.png">
+    And click here to select your music.
 </div>
-<div id="visualizer_intro">
-<img src="../static/arrowleft.png">
-And click there to select your visualizer.
-</div>
+-->
 
 
 
@@ -225,9 +235,9 @@ And click there to select your visualizer.
 
 <div class='left-rectangle'>
     <form action = "" method = "POST">
-        <input type ="image" src = "../static/REPLACEME.jpg" width = "80%" height = "15%" name = "vis" value="1" id = "visual1">
-        <input type ="image" src = "../static/REPLACEME.jpg" width = "80%" height = "15%" name = "vis" value="2" id = "visual2">
-        <input type ="image" src = "../static/REPLACEME.jpg" width = "80%" height = "15%" name = "vis" value="3" id = "visual3">
+        <input type ="image" src = "../static/visu1.png" width = "80%" height = "15%" name = "vis" value="1" id = "visual1">
+        <input type ="image" src = "../static/visu2.png" width = "80%" height = "15%" name = "vis" value="2" id = "visual2">
+        <input type ="image" src = "../static/visu3.png" width = "80%" height = "15%" name = "vis" value="3" id = "visual3">
         <input type ="image" src = "../static/REPLACEME.jpg" width = "80%" height = "15%" name = "vis" value="4" id = "visual4">
     </form>
 </div>
@@ -243,7 +253,174 @@ And click there to select your visualizer.
 </div>
 
 <span id="visualizer">
-<script> var scene = new THREE.Scene(); var camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);  var renderer = new THREE.WebGLRenderer(); renderer.setSize(window.innerWidth, window.innerHeight); document.body.appendChild(renderer.domElement);  var geometry = new THREE.CubeGeometry(1,1,1); var material = new THREE.MeshBasicMaterial({color:0xFF0000}); var cube = new THREE.Mesh(geometry, material); scene.add(cube);  camera.position.z = 5;  function render() { requestAnimationFrame(render);  cube.rotation.x += 0.1; cube.rotation.y += 0.1;  renderer.render(scene, camera); } render(); </script>
+<script>
+    function doAnimate() {
+        var camera, scene, renderer;
+        var scene_WID, scene_HT;
+        var grid_WID, grid_HT;
+        var spotlight;
+        var cubes, cubeGeometry, materials;
+        var centroids, frequencies, volumes;
+        var curated_centroids, curated_frequencies, curated_volumes;
+
+        init();
+        curate();
+
+        function init() {
+            scene_WID = window.innerWidth; //size of the scene
+            scene_HT = window.innerHeight;
+            /* Camera */
+            camera = new THREE.PerspectiveCamera(75, scene_WID / scene_HT, 0.1, 1000);
+
+            /* Cube Grid */
+            grid_WID = 18; //CHANGE THESE TO EDIT SIZE OF GRID
+            grid_HT = 12;
+            cubes = new Array(grid_WID);
+            for (var i = 0; i < grid_WID; i++) {
+                cubes[i] = new Array(grid_HT);
+            }
+            materials = new Array(grid_WID * grid_HT);
+            for (var i = 0; i < grid_WID * grid_HT; i++) {
+                materials[i] = new THREE.MeshPhongMaterial({
+                    color: 0xc0c0c0
+                });
+            }
+            cubeGeometry = new THREE.CubeGeometry(0.5, 0.5, 0.5);
+            var x = -1 * grid_WID / 2 - 1;
+            var mat = 0;
+            for (var i = 0; i < grid_WID; i++) {
+                var y = -1 * grid_HT / 2;
+                for (var j = 0; j < grid_HT; j++) {
+                    cubes[i][j] = new THREE.Mesh(cubeGeometry, materials[mat]);
+                    cubes[i][j].position.x = x;
+                    cubes[i][j].position.y = y;
+                    y++;
+                    mat++;
+                }
+                x++;
+            }
+
+            /* Lights */
+            light = new THREE.PointLight(0xffffff);   // creates light in all
+	    light_L = new THREE.PointLight(0x404040); // directions; 404040 is
+				                      // a softer color
+            /* Additions and positioning */
+            scene = new THREE.Scene();
+            camera.position.z = grid_HT;
+            for (var i = 0; i < cubes.length; i++) {
+                for (var j = 0; j < cubes[i].length; j++) {
+                    scene.add(cubes[i][j]);
+                }
+            }
+            scene.add(light);
+	    light.position.z = 10;
+            scene.add(light_L);
+            light_L.position.x = -25;
+            light_L.position.z = 15;
+            renderer = new THREE.CanvasRenderer();
+            renderer.setSize(scene_WID, scene_HT);
+            document.body.appendChild(renderer.domElement);
+        }
+
+        function curate() {
+            centroids = {{centroids}};
+            curated_centroids = new Array(centroids.length * 2);
+            for (var i = 0; i < curated_centroids.length; i++) { // convert to 60fps
+                curated_centroids[i] = centroids[i - i % 2];
+                curated_centroids[i] = curated_centroids[i];
+            } // centroids are in the range 0~1 and get scaled up in render()
+/*
+            frequencies = {{frequencies}};
+            curated_frequencies = new Array(frequencies.length * 2);
+            for (var i = 0; i < frequencies.length; i++) {
+                var sum = 0;
+                for (var j = 0; j < frequencies[i].length; j++) {
+                    sum += frequencies[i][j];
+                }
+                curated_frequencies[2 * i] = sum / frequencies[i].length;
+            }
+            for (var i = 0; i < curated_frequencies.length; i++) {
+                curated_frequencies[i] = curated_frequencies[i - i % 2];
+            }
+            for (var i = 0; i < curated_frequencies.length; i++) {
+                curated_frequencies[i] = Math.floor(
+                curated_frequencies[i] * grid_WID - 1);
+            }
+*/
+            curated_frequencies = new Array(curated_centroids.length);
+	    for (var i = 0; i < curated_frequencies.length; i++) {
+		curated_frequencies[i] = curated_centroids[i];
+            }
+	    for (var i = 0; i < curated_frequencies.length; i++) {
+	        curated_frequencies[i] = Math.floor(
+                                         curated_frequencies[i] * (grid_WID - 1));
+            } // frequencies are in the range 0 ~ grid_WID-1
+
+            volumes = {{volumes}};
+            curated_volumes = new Array(volumes.length * 2);
+            for (var i = 0; i < curated_volumes.length; i++) {
+                curated_volumes[i] = volumes[i - i % 2];
+                curated_volumes[i] = Math.floor(curated_volumes[i] * (grid_HT - 1));
+            } // volumes are in the range 0 ~ grid_HT-1
+        }
+
+
+        function light_column(freq, vol) {
+            for (var i = 0; i < vol; i++) {
+                if (i >= 0.7 * grid_HT) {
+                    cubes[freq][i].material.color.setHex(0xff0000);
+                } else {
+                    cubes[freq][i].material.color.setHex(0x0000ff);
+                } // color everything above a certain point red
+            }     // and everything below that blue
+		  // height of highest colored cube = volume (ie bottom cube, second, third cube, etc)
+            setTimeout(function () {
+                for (var i = 0; i < grid_HT; i++) {
+                    cubes[freq][i].material.color.setHex(0xc0c0c0);
+                }
+            }, 400); // un-color the column
+        }
+
+        function light_region(freq, vol) {
+            light_column(freq, vol);
+            if (vol >= 3) {
+                if (freq > 0) {
+                    light_column(freq - 1, vol - 2);
+                }
+                if (freq < grid_WID - 1) {
+                    light_column(freq + 1, vol - 2);
+                }
+            }
+            if (vol >= 5) {
+                if (freq > 1) {
+                    light_column(freq - 2, vol - 4);
+                }
+                if (freq < grid_WID - 2) {
+                    light_column(freq + 2, vol - 4);
+                }
+            } // color in two columns to the left and two columns
+        }     // to the right of the main column
+
+
+        var index = 0;
+        function render() {
+            requestAnimationFrame(render);  //THREE.js convention
+            renderer.render(scene, camera); //THREE.js convention
+            camera.position.x = 4 * Math.cos(index/200); // parametric eqns
+            camera.position.y = 2 * Math.sin(index/200); // of a circle
+            light.position.z = 30 + 60 * curated_centroids[index];
+            camera.lookAt(new THREE.Vector3(0, 0, 0)); // look at the origin
+	    try{
+                light_region(curated_frequencies[index],curated_volumes[index]);
+	    } catch(err) {
+            }
+            index = (index + 1) % curated_volumes.length; // loop after song is done
+
+        }
+
+        render();
+    }
+    </script>
 </span>
 <div id="music">
 
