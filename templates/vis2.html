@@ -243,7 +243,6 @@ rande", sans-serif;}
         var camera, scene, renderer;
         var scene_WID, scene_HT;
         var grid_WID, grid_HT;
-        var planeGeometry, planeMaterial, plane;
         var spotlight;
         var cubes, cubeGeometry, materials;
         var centroids, frequencies, volumes;
@@ -257,13 +256,6 @@ rande", sans-serif;}
             scene_HT = window.innerHeight;
             /* Camera */
             camera = new THREE.PerspectiveCamera(75, scene_WID / scene_HT, 0.1, 1000);
-
-            /* Background */
-            planeGeometry = new THREE.PlaneGeometry(450, 450, 20, 20);
-            planeMaterial = new THREE.MeshPhongMaterial({
-                color: 0x808080
-            }); //MeshPhongMaterial gets affected by lights
-            plane = new THREE.Mesh(planeGeometry, planeMaterial);
 
             /* Cube Grid */
             grid_WID = 18; //CHANGE THESE TO EDIT SIZE OF GRID
@@ -299,8 +291,6 @@ rande", sans-serif;}
 				                      // a softer color
             /* Additions and positioning */
             scene = new THREE.Scene();
-            scene.add(plane);
-            plane.position.z = -10;
             camera.position.z = grid_HT;
             for (var i = 0; i < cubes.length; i++) {
                 for (var j = 0; j < cubes[i].length; j++) {
