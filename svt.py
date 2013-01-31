@@ -572,7 +572,7 @@ def create_png(input_filename, output_filename_w, output_filename_s, image_width
     print " done"
 
 
-def processWav(filename, channel):
+def processWav(filename, channel, c, f, v):
     """
     filename: path to a wav file
     Channel: 1 for left, 2 for right
@@ -581,7 +581,7 @@ def processWav(filename, channel):
     #open file
     audio_file = audiolab.sndfile(filename, 'read')
     #should be length of audiofile in seconds * 60. will fix this later
-    
+    #print filename 
     import contextlib
     import wave
     with contextlib.closing(wave.open(filename, 'r')) as f:
@@ -622,7 +622,7 @@ def processWav(filename, channel):
     for i in range(len(frequencies)):
         for j in range(len(frequencies[i])):
             frequencies[i][j] = round(frequencies[i][j], 4)
-    return centroids, frequencies, volumes
+    c, f, v = centroids, frequencies, volumes
 
 """
  
