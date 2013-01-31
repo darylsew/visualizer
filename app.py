@@ -3,7 +3,7 @@ import urllib2,json
 import svt
 
 global centroids, frequencies, volumes,reg1centroids, reg1frequencies, reg1volumes, reg2centroids, reg2frequencies, reg2volumes, supercentroids, superfrequencies, supervolumes,rivercentroids, riverfrequencies,rivervolumes,starcentroids, starfrequencies, starvolumes,cypruscentroids, cyprusfrequencies,cyprusvolumes, sandscentroids, sandsfrequencies, sandsvolumes, dubcentroids, dubfrequencies,dubvolumes
-#centroids, frequencies, volumes = svt.processWav("wubwub.wav", 1)
+centroids, frequencies, volumes = svt.processWav("wubwub.wav", 1)
 reg1centroids, reg1frequencies, reg1volumes = svt.processWav("./static/reg1.wav", 1)
 reg2centroids, reg2frequencies, reg2volumes = svt.processWav("./static/reg2.wav", 1)
 cypruscentroids, cyprusfrequencies,cyprusvolumes = svt.processWav("./static/cyprus.wav", 1)

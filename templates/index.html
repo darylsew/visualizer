@@ -1,6 +1,6 @@
 <html>
+
 <head>
-{{song}}
 <script type="text/javascript">
 
   var _gaq = _gaq || [];
@@ -154,7 +154,7 @@ top:77%;
 left:10px;
 }
 
-/*
+
 #tune_intro{
 position:absolute;
 color:#FFFFFF;
@@ -162,7 +162,7 @@ font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", He
    font-weight: 300;
 
 }
-*/
+
 #visualizer_intro{
 color:#FFFFFF;
 font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida G\
@@ -175,7 +175,6 @@ left:20%;
 
 #visualizer{
 position:absolute;
-
 }
 
 #about{
@@ -193,6 +192,9 @@ color: #FFFFFF;
 font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida G\                                                                                                                                   
 rande", sans-serif;}
 
+#songval{
+visibility:hidden;
+}
 
 
 </style>
@@ -249,7 +251,7 @@ Click there to select your visualizer.
 <div id=pulldown >
 <center><img src = "../static/pulldown.jpg" height = "32px" width = "80px" ></center>
 </div>
-
+v
 <div id=pullright >
 <img src = "../static/pullright.jpg" height = "80px" width = "32px" >
 </div>
@@ -268,6 +270,10 @@ Source code is available at <a href=" http://github.com/stuycs-ml7-projects/visu
 Click this text to close this about pullout.
  </div>
 
+<div id="songval">{{song}}</div>
+
 <script src="../static/pageActions.js"></script>
+
+
 </body>
 </html>

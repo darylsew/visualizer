@@ -1,6 +1,6 @@
 <html>
 <head>
-{{song}}
+
 <script type="text/javascript">
 
   var _gaq = _gaq || [];
@@ -24,6 +24,10 @@
 body {
 background-image:url('../static/gun_metal.png');
 background-repeat:repeat;
+}
+
+#visualizer{
+position:absolute;
 }
 
 .top-rectangle{
@@ -171,7 +175,6 @@ left:20%;
 
 #visualizer{
 position:absolute;
-
 }
 
 #about{
@@ -190,6 +193,9 @@ font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", He
 rande", sans-serif;
    font-weight: 300;}
 
+#songval{
+visibility:hidden;
+}
 
 </style>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
@@ -400,6 +406,11 @@ Source code is available at <a href=" http://github.com/stuycs-ml7-projects/visu
 Click this text to close this about pullout.
  </div>
 
+<div id="songval">{{song}}</div>
 <script src="../static/pageActions.js"></script>
+
 </body>
+
+
+
 </html>

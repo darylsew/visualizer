@@ -1,6 +1,6 @@
 <html>
     <head>
-        {{song}}
+
 
 <script type="text/javascript">
 
@@ -192,6 +192,9 @@ color: #FFFFFF;
 font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida G\                                                                                                                                   
 rande", sans-serif;}
 
+#visualizer{
+position:absolute;
+}
 
 
 </style>
@@ -347,7 +350,8 @@ Visualizers are done using three.js.<br>
 Source code is available at <a href=" http://github.com/stuycs-ml7-projects/visualizer">http://github.com/stuycs-ml7-projects/visualizer</a>.<br>
 Click this text to close this about pullout.
  </div>
-
+<div id="songval">{{song}}</div>
 <script src="../static/pageActions.js"></script>
 </body>
+
 </html>

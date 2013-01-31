@@ -49,8 +49,8 @@ function pause(){
     audio.pause();
 }
 //experimental
-var song = {{song}};
-var filepath = ""
+var song = $("#songval").text();
+var filepath = "";
 if (song == 1) {
     filepath = "../static/reg1.mp3";
 }
