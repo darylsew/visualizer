@@ -1,83 +1,18 @@
 from flask import request,Flask,render_template, url_for,redirect,request
 import urllib2,json
 import svt
-from multiprocessing import Process
+
 global centroids, frequencies, volumes,reg1centroids, reg1frequencies, reg1volumes, reg2centroids, reg2frequencies, reg2volumes, supercentroids, superfrequencies, supervolumes,rivercentroids, riverfrequencies,rivervolumes,starcentroids, starfrequencies, starvolumes,cypruscentroids, cyprusfrequencies,cyprusvolumes, sandscentroids, sandsfrequencies, sandsvolumes, dubcentroids, dubfrequencies,dubvolumes
+centroids, frequencies, volumes = svt.processWav("wubwub.wav", 1)
+reg1centroids, reg1frequencies, reg1volumes = svt.processWav("./static/reg1.wav", 1)
+reg2centroids, reg2frequencies, reg2volumes = svt.processWav("./static/reg2.wav", 1)
+cypruscentroids, cyprusfrequencies,cyprusvolumes = svt.processWav("./static/cyprus.wav", 1)
+dubcentroids, dubfrequencies,dubvolumes = svt.processWav("./static/dubstep.wav", 1)
+rivercentroids, riverfrequencies,rivervolumes = svt.processWav("./static/river.wav", 1)
+sandscentroids, sandsfrequencies, sandsvolumes = svt.processWav("./static/sands.wav", 1)
+starcentroids, starfrequencies, starvolumes = svt.processWav("./static/starstuff.wav", 1)
+supercentroids, superfrequencies, supervolumes = svt.processWav("./static/superposition.wav", 1) #wormhole
 
-
-#centroids = []
-#frequencies = []
-#volumes = []
-reg1centroids = []
-reg1frequencies = []
-reg1volumes = []
-reg2centroids = []
-reg2frequencies = []
-reg2volumes = []
-supercentroids = []
-superfrequencies = []
-supervolumes = []
-rivercentroids = []
-riverfrequencies = []
-rivervolumes = []
-starcentroids = []
-starfrequencies = []
-starvolumes = []
-cypruscentroids = []
-cyprusfrequencies = []
-cyprusvolumes = []
-sandscentroids = []
-sandsfrequencies = []
-sandsvolumes = []
-dubcentroids = []
-dubfrequencies = []
-dubvolumes = []
-
-#Utilizes multicore processors to analyze wavs; huge improvement over previous method. 134.2s
-
-#a = Process(target=svt.processWav, args=('wubwub.wav', 1, centroids, frequencies, volumes))
-b = Process(target=svt.processWav, args=('./static/reg1.wav', 1, reg1centroids, reg1frequencies, reg1volumes))
-c = Process(target=svt.processWav, args=('./static/reg2.wav', 1, reg2centroids, reg2frequencies, reg2volumes))
-d = Process(target=svt.processWav, args=('./static/cyprus.wav', 1, cypruscentroids, cyprusfrequencies, cyprusvolumes))
-e = Process(target=svt.processWav, args=('./static/dubstep.wav', 1, dubcentroids, dubfrequencies, dubvolumes))
-f = Process(target=svt.processWav, args=('./static/river.wav', 1, rivercentroids, riverfrequencies, rivervolumes))
-g = Process(target=svt.processWav, args=('./static/sands.wav', 1, sandscentroids, sandsfrequencies, sandsvolumes))
-h = Process(target=svt.processWav, args=('./static/starstuff.wav', 1, starcentroids, starfrequencies, starvolumes))
-i = Process(target=svt.processWav, args=('./static/superposition.wav', 1, supercentroids, superfrequencies, supervolumes))
-
-#a.start()
-b.start()
-c.start()
-d.start()
-e.start()
-f.start()
-g.start()
-h.start()
-i.start()
-
-#a.join()
-b.join()
-c.join()
-d.join()
-e.join()
-f.join()
-g.join()
-h.join()
-i.join()
-
-
-#191.7s without threading
-"""
-svt.processWav("wubwub.wav", 1, centroids, frequencies, volumes)
-svt.processWav("./static/reg1.wav", 1, reg1centroids, reg1frequencies, reg1volumes)
-svt.processWav("./static/reg2.wav", 1, reg2centroids, reg2frequencies, reg2volumes)
-svt.processWav("./static/cyprus.wav", 1, cypruscentroids, cyprusfrequencies,cyprusvolumes)
-svt.processWav("./static/dubstep.wav", 1, dubcentroids, dubfrequencies,dubvolumes)
-svt.processWav("./static/river.wav", 1, rivercentroids, riverfrequencies,rivervolumes)
-svt.processWav("./static/sands.wav", 1, sandscentroids, sandsfrequencies, sandsvolumes)
-svt.processWav("./static/starstuff.wav", 1, starcentroids, starfrequencies, starvolumes)
-svt.processWav("./static/superposition.wav", 1, supercentroids, superfrequencies, supervolumes) #wormhole
-"""
 app=Flask(__name__)
 
 @app.route("/", methods=['GET', 'POST'])
@@ -139,8 +74,6 @@ def vis1():
             song = int(request.form['song'])
         except:
             pass
-        #because the thing breaks with every other song...
-        centroids, frequencies, volumes = rivercentroids, riverfrequencies, rivervolumes
     return render_template("vis1.html", centroids=centroids, frequencies=frequencies, volumes=volumes, song=song)
 
 @app.route("/v2", methods=['GET', 'POST'])
