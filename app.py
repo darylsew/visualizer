@@ -3,16 +3,6 @@ import urllib2,json
 import svt
 
 global centroids, frequencies, volumes,reg1centroids, reg1frequencies, reg1volumes, reg2centroids, reg2frequencies, reg2volumes, supercentroids, superfrequencies, supervolumes,rivercentroids, riverfrequencies,rivervolumes,starcentroids, starfrequencies, starvolumes,cypruscentroids, cyprusfrequencies,cyprusvolumes, sandscentroids, sandsfrequencies, sandsvolumes, dubcentroids, dubfrequencies,dubvolumes
-centroids, frequencies, volumes = svt.processWav("wubwub.wav", 1)
-reg1centroids, reg1frequencies, reg1volumes = svt.processWav("./static/reg1.wav", 1)
-reg2centroids, reg2frequencies, reg2volumes = svt.processWav("./static/reg2.wav", 1)
-cypruscentroids, cyprusfrequencies,cyprusvolumes = svt.processWav("./static/cyprus.wav", 1)
-dubcentroids, dubfrequencies,dubvolumes = svt.processWav("./static/dubstep.wav", 1)
-rivercentroids, riverfrequencies,rivervolumes = svt.processWav("./static/river.wav", 1)
-sandscentroids, sandsfrequencies, sandsvolumes = svt.processWav("./static/sands.wav", 1)
-starcentroids, starfrequencies, starvolumes = svt.processWav("./static/starstuff.wav", 1)
-supercentroids, superfrequencies, supervolumes = svt.processWav("./static/superposition.wav", 1) #wormhole
-
 app=Flask(__name__)
 
 @app.route("/", methods=['GET', 'POST'])
@@ -74,6 +64,8 @@ def vis1():
             song = int(request.form['song'])
         except:
             pass
+        #temporary fix
+        centroids, frequencies, volumes = starcentroids, starfrequencies, starvolumes
     return render_template("vis1.html", centroids=centroids, frequencies=frequencies, volumes=volumes, song=song)
 
 @app.route("/v2", methods=['GET', 'POST'])
@@ -209,4 +201,13 @@ def preProcess():
     pass
 
 if __name__=="__main__":
+    centroids, frequencies, volumes = svt.processWav("wubwub.wav", 1)
+    reg1centroids, reg1frequencies, reg1volumes = svt.processWav("./static/reg1.wav", 1)
+    reg2centroids, reg2frequencies, reg2volumes = svt.processWav("./static/reg2.wav", 1)
+    cypruscentroids, cyprusfrequencies,cyprusvolumes = svt.processWav("./static/cyprus.wav", 1)
+    dubcentroids, dubfrequencies,dubvolumes = svt.processWav("./static/dubstep.wav", 1)
+    rivercentroids, riverfrequencies,rivervolumes = svt.processWav("./static/river.wav", 1)
+    sandscentroids, sandsfrequencies, sandsvolumes = svt.processWav("./static/sands.wav", 1)
+    starcentroids, starfrequencies, starvolumes = svt.processWav("./static/starstuff.wav", 1)
+    supercentroids, superfrequencies, supervolumes = svt.processWav("./static/superposition.wav", 1) #wormhole
     app.run(debug=True)
