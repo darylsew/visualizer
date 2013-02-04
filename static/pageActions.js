@@ -48,7 +48,41 @@ function play(){
 function pause(){
     audio.pause();
 }
-
+//experimental
+var song = $("#songval").text();
+var filepath = "";
+if (song == 1) {
+    filepath = "../static/reg1.mp3";
+}
+else if (song == 2) {
+    filepath = "../static/reg2.mp3";
+}
+else if (song == 3) {
+    filepath = "../static/superposition.mp3";
+}   
+else if (song == 4) {
+    filepath = "../static/river.mp3";
+}
+else if (song == 5) {
+    filepath = "../static/starstuff.mp3";
+}
+else if (song == 6) {
+    filepath = "../static/cyprus.mp3";
+}
+else if (song == 7) {
+    filepath = "../static/sands.mp3";
+}
+else if (song == 8) {
+    filepath = "../static/dubstep.mp3";
+}
+if (song != 0) {
+    pause();
+    audio = new Audio(filepath);
+    audio.load();
+    play();
+    doAnimate();
+}
+/*
 //handles playing the music
 $("#reg1").click(function(){
 	pause();
@@ -113,6 +147,7 @@ $("#dubstep").click(function(){
 	play();
     doAnimate();
     });
+*/
 
 $(".left-rectangle").mouseenter(function(){
     }).mouseleave(function(){

@@ -26,6 +26,10 @@ background-image:url('../static/gun_metal.png');
 background-repeat:repeat;
 }
 
+#visualizer{
+position:absolute;
+}
+
 .top-rectangle{
 background-color:#FFFFFF;
 position:relative;
@@ -171,7 +175,6 @@ left:20%;
 
 #visualizer{
 position:absolute;
-
 }
 
 #about{
@@ -190,6 +193,9 @@ font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", He
 rande", sans-serif;
    font-weight: 300;}
 
+#songval{
+visibility:hidden;
+}
 
 </style>
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.min.js"></script>
@@ -217,14 +223,16 @@ rande", sans-serif;
 
 
 <div  class='top-rectangle'>
-<img src = "../static/reggaerecruit.png" width = "80px" height = "80px" id = "reg1">
-<img src = "../static/regparty.jpg" width = "80px" height = "80px" id = "reg2">
-<img src = "../static/wormhole.jpg" width = "80px" height = "80px" id = "wormhole">
-<img src = "../static/river.jpg" width = "80px" height = "80px" id = "river">
-<img src = "../static/starstuff.jpg" width = "80px" height = "80px" id = "starstuff">
-<img src = "../static/cyprus.jpg" width = "80px" height = "80px" id = "cyprus">
-<img src = "../static/sands.jpg" width = "80px" height = "80px" id = "sands">
-<img src = "../static/dubstep.png" width = "80px" height = "80px" id = "dubstep">
+    <form action="" method = "POST">
+        <input type = "image" src = "../static/reggaerecruit.png" width = "80px" height = "80px" name="song" value="1" id = "reg1">
+        <input type = "image" src = "../static/regparty.jpg" width = "80px" height = "80px" name="song" value="2" id = "reg2">
+        <input type = "image" src = "../static/wormhole.jpg" width = "80px" height = "80px" name="song" value="3" id = "wormhole">
+        <input type = "image" src = "../static/river.jpg" width = "80px" height = "80px" name="song" value="4" id = "river">
+        <input type = "image" src = "../static/starstuff.jpg" width = "80px" height = "80px" name="song" value="5" id = "starstuff">
+        <input type = "image" src = "../static/cyprus.jpg" width = "80px" height = "80px" name="song" value="6" id = "cyprus">
+        <input type = "image" src = "../static/sands.jpg" width = "80px" height = "80px" name="song" value="7" id = "sands">
+        <input type = "image" src = "../static/dubstep.png" width = "80px" height = "80px" name="song" value="8" id = "dubstep">
+    </form>    
 </div>
 
 <div class='left-rectangle'>
@@ -398,6 +406,11 @@ Source code is available at <a href=" http://github.com/stuycs-ml7-projects/visu
 Click this text to close this about pullout.
  </div>
 
+<div id="songval">{{song}}</div>
 <script src="../static/pageActions.js"></script>
+
 </body>
+
+
+
 </html>
